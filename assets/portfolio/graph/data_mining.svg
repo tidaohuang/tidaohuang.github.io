@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="340px" height="340px" viewBox="0 0 340 340" enable-background="new 0 0 340 340" xml:space="preserve">
+<rect fill="#C2D559" width="340" height="340"/>
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M320,306.716c0,7.336-7.008,13.284-15.652,13.284H35.652C27.008,320,20,314.052,20,306.716V33.284
+			C20,25.947,27.008,20,35.652,20h268.695C312.992,20,320,25.947,320,33.284V306.716z"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<rect x="20" y="20" clip-path="url(#SVGID_2_)" fill="#FFFDFE" width="300" height="300"/>
+</g>
+<image overflow="visible" width="1284" height="856" xlink:href="ga.png"  transform="matrix(0.3365 0 0 0.3365 4.882813e-004 432.4766)">
+</image>
+<g>
+	<g>
+		<circle fill="#008000" cx="170" cy="170" r="20"/>
+		<rect x="146.25" y="163.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 159.0859 174.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">TPE</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="94" cy="121" r="20"/>
+		<rect x="70.25" y="114.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 81.3643 125.0601)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">MDA</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="138" cy="84" r="20"/>
+		<rect x="114.25" y="77.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 126.4683 88.0601)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">COL</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="269" cy="77" r="20"/>
+		<rect x="245.25" y="70.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 259.2676 81.0601)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">INA</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="281" cy="184" r="20"/>
+		<rect x="257.25" y="177.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 271.082 188.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">PHI</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="230" cy="225" r="20"/>
+		<rect x="206.25" y="218.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 218.8643 229.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">KAZ</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="102" cy="272" r="20"/>
+		<rect x="78.25" y="265.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 90.9961 276.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">BLR</text>
+	</g>
+	<g>
+		<circle fill="#008000" cx="60" cy="210" r="20"/>
+		<rect x="36.25" y="203.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 48.396 214.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">THA</text>
+	</g>
+	<rect x="52" y="32" fill="none" width="236" height="22.5"/>
+	<text transform="matrix(1 0 0 1 60.6216 42.5601)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">Weightlifting Women’s Featherweight</text>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="109.515" y1="133.618" x2="153.25" y2="159.076"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="80" y1="205" x2="151.459" y2="177.5"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="114" y1="256" x2="159.39" y2="186.951"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="186.75" y1="159.076" x2="257.25" y2="93.181"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="166.865" y1="150.246" x2="143.691" y2="103.174"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="211.895" y1="216.5" x2="186.75" y2="177.5"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="261" y1="181" x2="190" y2="170"/>
+	<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="186.75" y1="237" x2="177" y2="188.738"/>
+	<g>
+		<circle fill="#008000" cx="185" cy="255" r="20"/>
+		<rect x="161.25" y="248.5" fill="none" width="47.5" height="13"/>
+		<text transform="matrix(1 0 0 1 172.8623 259.0605)" font-family="'NotoSansCJKtc-Regular-B5pc-H'" font-size="12">KOR</text>
+	</g>
+</g>
+</svg>
