@@ -2373,6 +2373,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   cursor: pointer;
   margin-bottom: 30px;
+  height: 350px;
 }
 
 .portfolio-area .filters-content .item img {
@@ -2394,6 +2395,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 40px;
     margin-bottom: 5px
   }
+  
+  .portfolio-area .filters-content .item {
+    height: 350px;
+  }
 }
 
 @media (max-width: 1000px) {    
@@ -2401,6 +2406,24 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     height: 40px;
     margin-bottom: 5px
+  }  
+  
+  .portfolio-area .filters-content .item {
+    height: 350px;
+  }
+}
+
+
+@media (max-width: 780px) {      
+  .portfolio-area .filters-content .item {
+    height: 300px;
+  }
+}
+
+
+@media (max-width: 560px) {    
+  .portfolio-area .filters-content .item {
+    height: 500px;
   }
 }
 
