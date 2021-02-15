@@ -21,14 +21,14 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">					
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/nice-select.css">					
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">
+			<link rel="stylesheet" href="../css/main.css">
 		</head>
 		<body>
 			<div class="protfolio-wrap">
@@ -37,7 +37,7 @@
 			<header class="default-header">
 				<nav class="navbar navbar-expand-lg  navbar-light">
 					<div class="container">
-						  <a class="navbar-brand" href="index.html">
+						  <a class="navbar-brand" href="../index.html">
 						  	<img src="img/logo.svg" alt="">
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
 
 						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 						    <ul class="navbar-nav">
-								<li><a href="index.html">About</a></li>
-								<li><a href="story.html">Story</a></li>
-								<li><a href="portfolio.html">Portfolio</a></li>
-								<li><a href="assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
+								<li><a href="../index.html">About</a></li>
+								<li><a href="../story.html">Story</a></li>
+								<li><a href="../portfolio.html">Portfolio</a></li>
+								<li><a href="../assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
 						    </ul>
 						  </div>						
 					</div>
@@ -64,9 +64,8 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white">Stochastic Assignment Optimization <br>
-									via Hybrid Genetic Algorithm</h1>
-								<p>Hybrid Genetic Algorithm</p>
+								<h1 class="mb-10 text-white">Implementation of Simplex Algorithm</h1>
+								<p>Linear Programming</p>
 							</div>
 						</div>
 					</div>	
@@ -80,19 +79,12 @@
 					<div class="row">
 						<div class="col-lg">
 							<div class="single-service">
-								<h3>Abstract</h3>
+								<h3>Introduction</h3>
 								<p>
-									This project tackles the non-linear and acyclic assignment problems with uncertain processing times. We propose an effective genetic algorithm (GA) hybridized with Hungarian Algorithm, critical path method, Job-order crossover, and so forth, to minimize the total processing time. To build a high-quality and diverse set of initial population of GA, we introduce a heuristic method combined with critical path based Hungarian algorithm. In this hybrid GA, there are two different evolution approaches, breadth search and depth search. The former applies the roulette-wheel copy and roulette-wheel selection integrated with Job-order crossover; the latter infuses critical path-search and Hungarian Algorithm. The breadth search is used to avoid being trapped at a local optimal solution, and the depth search is used to accelerate the local search. This hybrid GA will harness one of the approaches with some specific condition; that is, this algorithm will repetitively switch between these two methods to increase the efficiency of finding the better solution.
+									After taking the course: Operation Research (I) and linear programming, I put an additional effort to build the Simplex algorithm with python. Users can input the decision variables, objective function (vector c), and constraints (matrix A and right hand side vector b). Then, the program will automatically solve the problem. However, the limitation of this program is that it can only solve the linear programming problem.
 									<br><br>
-									Completion time: Dec. 2019
+									Completion time: Nov. 2019
 								</p>
-								<div class="button-group-area">
-									<a href="assets\portfolio\document\ga.pdf" target="_blank"
-									   class="genric-btn primary e-large">view the full document</a>
-
-									   <a href="assets\portfolio\document\ga_poster.pdf" target="_blank"
-									   class="genric-btn primary e-large">view the poster</a>
-								</div>
 							</div>
 						</div>												
 					</div>
@@ -111,8 +103,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">01. Input</h3>
 									<ul class="unordered-list">
-										<li>Production routing</li>
-										<li>Processing time for each worker to finish each task</li>
+										<li>decision variables</li>
+										<li>objective function</li>
+										<li>constraints (right hand side vector b, and matrix A)</li>
 									</ul>
 								</div>
 							</div>
@@ -120,10 +113,10 @@
 								<div class="single-defination">
 									<h3 class="mb-20">02. Process</h3>
 									<ul class="unordered-list">
-										<li>Encode the problem as chromosomes</li>
-										<li>Generate initial population</li>
-										<li>Switch between depth search and breadth search, and gain new populations</li>
-										<li>Stop the hybrid GA if the stop condition meets</li>
+										<li>Transform the input data as proper form (in dictionary format of Simplex method)</li>
+										<li>Execute Simplex method to solve the problem</li>
+										<li>[Optional] conduct sensitivity analysis</li>
+										<li>[Optional] re-optimize the problem if any parameter is changed</li>
 									</ul>
 								</div>
 							</div>
@@ -131,7 +124,7 @@
 								<div class="single-defination">
 									<h3 class="mb-20">03. Output</h3>
 									<ul class="unordered-list">
-										<li>The solution of the problem</li>
+										<li>The solved solution (either optimal, infeasible, or infinite solution)and the value of its decision variables</li>
 									</ul>
 								</div>
 							</div>
@@ -147,9 +140,9 @@
 				<div class="container">
 					<h3 class="text-heading">Benefit and Result</h3>
 					<ul class="unordered-list">
-						<li>An alternative to solve the high-dimensional problem if the problem is extremely hard to get the solution</li>
-						<li>The algorithm can be applied for many kinds of real problem if the problem can be formulated as DNA sequence.</li>
+						<li>The problem for optimization in the real world can be easily solved if the dimension of the problem is not extremely large and the problem is the linear programming not integer programming or mixed integer programming.</li>
 					</ul>
+
 				</div>
 			</section>
 			<!-- End Benefit and Result Area -->

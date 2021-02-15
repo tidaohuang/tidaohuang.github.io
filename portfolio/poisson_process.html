@@ -21,14 +21,14 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">					
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/nice-select.css">					
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">
+			<link rel="stylesheet" href="../css/main.css">
 		</head>
 		<body>
 			<div class="protfolio-wrap">
@@ -37,7 +37,7 @@
 			<header class="default-header">
 				<nav class="navbar navbar-expand-lg  navbar-light">
 					<div class="container">
-						  <a class="navbar-brand" href="index.html">
+						  <a class="navbar-brand" href="..\index.html">
 						  	<img src="img/logo.svg" alt="">
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
 
 						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 						    <ul class="navbar-nav">
-								<li><a href="index.html">About</a></li>
-								<li><a href="story.html">Story</a></li>
-								<li><a href="portfolio.html">Portfolio</a></li>
-								<li><a href="assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
+								<li><a href="..\index.html">About</a></li>
+								<li><a href="..\story.html">Story</a></li>
+								<li><a href="..\portfolio.html">Portfolio</a></li>
+								<li><a href="..\assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
 						    </ul>
 						  </div>						
 					</div>
@@ -64,8 +64,9 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white">The Potential Medal Winners and Competitors of Taiwan at Historical Olympic Games</h1>
-								<p>Data Mining</p>
+								<h1 class="mb-10 text-white">Searching Parking Space in the Metropolitan Area <br>
+									with the Inhomogeneous Poisson Process</h1>
+								<p>Poisson Process</p>
 							</div>
 						</div>
 					</div>	
@@ -81,12 +82,13 @@
 							<div class="single-service">
 								<h3>Abstract</h3>
 								<p>
-									In history, human made a competition through sport games, well-known as Olympic Games. This sport competition has been a common interaction between people of different races and different countries. With the development of training equipment and strategy, the body shape and characteristic of players in Olympic Games have gradually improved in a proper way. We aim to find the potential medal winners of Taiwan and increase the probability for Taiwanese players to win a prize in Olympic. To reach the goal, we analyze the winner record in historical Olympic Games from 1896 to 2016. In section I, we conduct the initial data analysis through adding useful information into dataset, filtering data with the critical criterion, and visualizing data. Based on the initial data analysis, three kinds of topic are proposed: the most competitive sports for Taiwan, the prediction of potential medal winner, and the analysis of potential competitors from different country. The methodology and the analyzing result are discussed in section III and section IV respectively. The conclusion, given in section V, summarizes the three insights: 1. the men’s swimming, men’s shooting, women’s athletics, and women’s badminton are the most competitive sport game for Taiwanese players. Therefore, the training center for Olympic Games in Taiwan may highly emphasize those four types of games, which may win Taiwan a medal. 2. The three key factors to predict the potential medal winner are gender, country, and types of the games. 3. The Taiwanese weightlifting players must be cautious when competing with the Chinese players whose height is lower than 156.5 centimeter, and weight is lower than 56.5 kilogram. In addition, the Taiwanese taekwondo players must be cautious as well if they meet the Korean player or Thai player. 
+									Looking for parking space is always an issue for most of the drivers who commute between countries and cities every day. Sensors, therefore, are installed in the parking lots to determine whether the parking spaces are occupied or available, and update the real-time information for drivers. However, the sensing system is too expensive to construct and maintain. Our goal in this study is to minimize the parking search time in urban area. We propose a parking space searching method, called ‘priority decision method’, which considers the driving time (including the intersection and the time spent in waiting for the parking space) and space-occupied rate. We model the parking rate and leaving rate as Poisson process. Then, we develop a priority decision rule for drivers to figure out which parking lot is the optimal choice to go. Finally, verify the result by simulation compared with shortest distance method, which is similar to GPS recommend system. According to the result, the result with priority decision rule is better.
+
 									<br><br>
-									Completion time: June, 2019
+									Completion time: Dec. 2019
 								</p>
 								<div class="button-group-area">
-									<a href="assets\portfolio\document\data_mining.pdf" target="_blank"
+									<a href="..\assets\portfolio\document\poisson_process.pdf" target="_blank"
 									   class="genric-btn primary e-large">view the full document</a>
 								</div>
 							</div>
@@ -107,7 +109,8 @@
 								<div class="single-defination">
 									<h3 class="mb-20">01. Input</h3>
 									<ul class="unordered-list">
-										<li>The winner record of historical Olympic Games</li>
+										<li>The location of parking lots</li>
+										<li>The entering and leaving rate of each parking lot per hour</li>		
 									</ul>
 								</div>
 							</div>
@@ -115,9 +118,11 @@
 								<div class="single-defination">
 									<h3 class="mb-20">02. Process</h3>
 									<ul class="unordered-list">
-										<li>Utilize association rule learning methodology to find the most competitive sports for Taiwan</li>
-										<li>Apply random forest algorithm, Naive Bayes classifier, logistic regression, SVM to predict the potential medal winner, and use accuracy and F1 score as the evaluation criterion</li>
-										<li>Use decision tree to find the potential competitors of Taiwanese player</li>
+										<li>Filter out possible parking lots for parking in the certain area</li>
+										<li>Evaluate the priority of each parking lot</li>
+										<li>Navigate drivers to the suggested parking lot</li>
+										<li>Use the object-orientated programming to implement the simulation process to mimic the behavior of searching parking space</li>
+										<li>Plot the simulated result</li>		
 									</ul>
 								</div>
 							</div>
@@ -125,9 +130,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">03. Output</h3>
 									<ul class="unordered-list">
-										<li>the information of the most competitive sports for Taiwan</li>
-										<li>the prediction result of potential medal winner</li>
-										<li>the information of the potential competitors of Taiwan from different country</li>
+										<li>Simulated result</li>
+										<li>The boxplot of the simulated parking space searching time</li>
+										<li>Service region of each parking lot by the priority decision method</li>
 									</ul>
 								</div>
 							</div>
@@ -143,8 +148,12 @@
 				<div class="container">
 					<h3 class="text-heading">Benefit and Result</h3>
 					<ul class="unordered-list">
-						<li>Offer additional information to the training center for Olympic Games in Taiwan</li>
+						<li>We propose a priority decision method that helps driver gain the recommended parking lot. </li>
+						<li>With the simulation result, we verify that the priority decision method indeed saves drivers’ time in average to find a space in rush hour.</li>
+						<li>Compared to the thorough parking space sensing system, priority decision method is cost-effective in the real world.</li>					
 					</ul>
+
+
 				</div>
 			</section>
 			<!-- End Benefit and Result Area -->

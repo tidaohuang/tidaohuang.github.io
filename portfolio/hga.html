@@ -21,14 +21,14 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">					
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/nice-select.css">					
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">
+			<link rel="stylesheet" href="../css/main.css">
 		</head>
 		<body>
 			<div class="protfolio-wrap">
@@ -37,7 +37,7 @@
 			<header class="default-header">
 				<nav class="navbar navbar-expand-lg  navbar-light">
 					<div class="container">
-						  <a class="navbar-brand" href="index.html">
+						  <a class="navbar-brand" href="..\index.html">
 						  	<img src="img/logo.svg" alt="">
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
 
 						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 						    <ul class="navbar-nav">
-								<li><a href="index.html">About</a></li>
-								<li><a href="story.html">Story</a></li>
-								<li><a href="portfolio.html">Portfolio</a></li>
-								<li><a href="assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
+								<li><a href="..\index.html">About</a></li>
+								<li><a href="..\story.html">Story</a></li>
+								<li><a href="..\portfolio.html">Portfolio</a></li>
+								<li><a href="..\assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
 						    </ul>
 						  </div>						
 					</div>
@@ -64,8 +64,9 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white">The Analysis of Feed-Material Processes in Manufacturing System with Empirical Data</h1>
-								<p>Simulation Optimization</p>
+								<h1 class="mb-10 text-white">Stochastic Assignment Optimization <br>
+									via Hybrid Genetic Algorithm</h1>
+								<p>Hybrid Genetic Algorithm</p>
 							</div>
 						</div>
 					</div>	
@@ -81,11 +82,17 @@
 							<div class="single-service">
 								<h3>Abstract</h3>
 								<p>
-									This study has created a simulation system with python to compare two different feed-material processes (named method A, and method B respectively) by automated guided vehicle (AGV) and demonstrate the impact of these two processes to the total processing time in one of the workstation in shop floor system. The simulation system in this study estimates most of the production factors, such as cycle time, production yield, and total number of items in a work order and so on, with the empirical data so as to increase the reliability of the simulated result. The result shows that method A is no worse than method B under most of the production parameters setting. In addition, method A will outperform method B if the number of items in a worker order is more than 1500 or the production yield is lower than 97.5% or number of machines in working is more than 10. And finally, the result indicates the recommended number of machines should be operated is 10, which is a valuable information for producing product and reduce cost.
-
+									This project tackles the non-linear and acyclic assignment problems with uncertain processing times. We propose an effective genetic algorithm (GA) hybridized with Hungarian Algorithm, critical path method, Job-order crossover, and so forth, to minimize the total processing time. To build a high-quality and diverse set of initial population of GA, we introduce a heuristic method combined with critical path based Hungarian algorithm. In this hybrid GA, there are two different evolution approaches, breadth search and depth search. The former applies the roulette-wheel copy and roulette-wheel selection integrated with Job-order crossover; the latter infuses critical path-search and Hungarian Algorithm. The breadth search is used to avoid being trapped at a local optimal solution, and the depth search is used to accelerate the local search. This hybrid GA will harness one of the approaches with some specific condition; that is, this algorithm will repetitively switch between these two methods to increase the efficiency of finding the better solution.
 									<br><br>
-									Completion time: Jan. 2020
+									Completion time: Dec. 2019
 								</p>
+								<div class="button-group-area">
+									<a href="..\assets\portfolio\document\ga.pdf" target="_blank"
+									   class="genric-btn primary e-large">view the full document</a>
+
+									   <a href="..\assets\portfolio\document\ga_poster.pdf" target="_blank"
+									   class="genric-btn primary e-large">view the poster</a>
+								</div>
 							</div>
 						</div>												
 					</div>
@@ -104,7 +111,8 @@
 								<div class="single-defination">
 									<h3 class="mb-20">01. Input</h3>
 									<ul class="unordered-list">
-										<li>Manufacturing data such as processing time for different product id in different stage (CSV file)</li>										
+										<li>Production routing</li>
+										<li>Processing time for each worker to finish each task</li>
 									</ul>
 								</div>
 							</div>
@@ -112,10 +120,10 @@
 								<div class="single-defination">
 									<h3 class="mb-20">02. Process</h3>
 									<ul class="unordered-list">
-										<li>Estimate the processing time of end product and defective, and check the proper distribution for those data</li>
-										<li>Define the detail of the two different feed-material processes done by AGV</li>
-										<li>Use the object-orientated programming to implement the simulation process to mimic the production line in the real world</li>
-										<li>Plot the simulated result</li>
+										<li>Encode the problem as chromosomes</li>
+										<li>Generate initial population</li>
+										<li>Switch between depth search and breadth search, and gain new populations</li>
+										<li>Stop the hybrid GA if the stop condition meets</li>
 									</ul>
 								</div>
 							</div>
@@ -123,8 +131,7 @@
 								<div class="single-defination">
 									<h3 class="mb-20">03. Output</h3>
 									<ul class="unordered-list">
-										<li>Simulated result of different feed-material process</li>
-										<li>Graphical and statistical result to show the proper situation for different feed-material processes</li>				
+										<li>The solution of the problem</li>
 									</ul>
 								</div>
 							</div>
@@ -140,11 +147,9 @@
 				<div class="container">
 					<h3 class="text-heading">Benefit and Result</h3>
 					<ul class="unordered-list">
-						<li>In the simulation system, the simulated result can be generated to estimate the possible outcome in the real manufacturing system.</li>
-						<li>Avoid using the real world system to generate data and save costs</li>
-						<li>Realize the proper situation for different feed-material process so as to tune the manufacturing process.</li>
+						<li>An alternative to solve the high-dimensional problem if the problem is extremely hard to get the solution</li>
+						<li>The algorithm can be applied for many kinds of real problem if the problem can be formulated as DNA sequence.</li>
 					</ul>
-
 				</div>
 			</section>
 			<!-- End Benefit and Result Area -->

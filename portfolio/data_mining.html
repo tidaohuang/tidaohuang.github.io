@@ -21,14 +21,14 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">					
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/nice-select.css">					
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">
+			<link rel="stylesheet" href="../css/main.css">
 		</head>
 		<body>
 			<div class="protfolio-wrap">
@@ -37,7 +37,7 @@
 			<header class="default-header">
 				<nav class="navbar navbar-expand-lg  navbar-light">
 					<div class="container">
-						  <a class="navbar-brand" href="index.html">
+						  <a class="navbar-brand" href="..\index.html">
 						  	<img src="img/logo.svg" alt="">
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
 
 						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 						    <ul class="navbar-nav">
-								<li><a href="index.html">About</a></li>
-								<li><a href="story.html">Story</a></li>
-								<li><a href="portfolio.html">Portfolio</a></li>
-								<li><a href="assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
+								<li><a href="..\index.html">About</a></li>
+								<li><a href="..\story.html">Story</a></li>
+								<li><a href="..\portfolio.html">Portfolio</a></li>
+								<li><a href="..\assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
 						    </ul>
 						  </div>						
 					</div>
@@ -64,10 +64,8 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white">An Implementation of Fuzzy Linear Regression Module
-									and its Application of Forecasting Electricity Demand
-									</h1>
-								<p>Fuzzy Linear Regression</p>
+								<h1 class="mb-10 text-white">The Potential Medal Winners and Competitors of Taiwan at Historical Olympic Games</h1>
+								<p>Data Mining</p>
 							</div>
 						</div>
 					</div>	
@@ -83,12 +81,12 @@
 							<div class="single-service">
 								<h3>Abstract</h3>
 								<p>
-									We implement a fuzzy linear regression module that can deal with quantitative variables and qualitative variables as well.  Moreover, we modify the LP formulation behind the fuzzy regression and increase its fitting performance. To evaluate the performance of the fuzzy linear regression module, we conduct an empirical analysis of forecasting the electricity demand of a manufacturing factory in Shanghai. The predictors include production quantity, quarter (Q1, Q2, Q3, and Q4), temperature, precipitation, and wind speed. Also, electricity usage is taken as response. The results based on training set and testing set show that mean absolute percentage error (MAPE) of fuzzy linear regression almost equals to that of OLS, which implies that fuzzy linear regression is as good as conventional regression methodology. However, without additional statistical assumption under fuzzy linear regression, fuzzy linear regression is easy to perform. If the assumption of conventional linear regression cannot be satisfied, then fuzzy linear regression may be a good alternative for researchers to take advantage of.
+									In history, human made a competition through sport games, well-known as Olympic Games. This sport competition has been a common interaction between people of different races and different countries. With the development of training equipment and strategy, the body shape and characteristic of players in Olympic Games have gradually improved in a proper way. We aim to find the potential medal winners of Taiwan and increase the probability for Taiwanese players to win a prize in Olympic. To reach the goal, we analyze the winner record in historical Olympic Games from 1896 to 2016. In section I, we conduct the initial data analysis through adding useful information into dataset, filtering data with the critical criterion, and visualizing data. Based on the initial data analysis, three kinds of topic are proposed: the most competitive sports for Taiwan, the prediction of potential medal winner, and the analysis of potential competitors from different country. The methodology and the analyzing result are discussed in section III and section IV respectively. The conclusion, given in section V, summarizes the three insights: 1. the men’s swimming, men’s shooting, women’s athletics, and women’s badminton are the most competitive sport game for Taiwanese players. Therefore, the training center for Olympic Games in Taiwan may highly emphasize those four types of games, which may win Taiwan a medal. 2. The three key factors to predict the potential medal winner are gender, country, and types of the games. 3. The Taiwanese weightlifting players must be cautious when competing with the Chinese players whose height is lower than 156.5 centimeter, and weight is lower than 56.5 kilogram. In addition, the Taiwanese taekwondo players must be cautious as well if they meet the Korean player or Thai player. 
 									<br><br>
-									Completion time: June, 2020
+									Completion time: June, 2019
 								</p>
 								<div class="button-group-area">
-									<a href="assets\portfolio\document\fuzzy_regression.pdf" target="_blank"
+									<a href="..\assets\portfolio\document\data_mining.pdf" target="_blank"
 									   class="genric-btn primary e-large">view the full document</a>
 								</div>
 							</div>
@@ -109,9 +107,7 @@
 								<div class="single-defination">
 									<h3 class="mb-20">01. Input</h3>
 									<ul class="unordered-list">
-										<li>The information of electric meter (CSV)</li>
-										<li>Electricity usage data (CSV format)</li>
-										<li>Production quantity data (CSV format)</li>
+										<li>The winner record of historical Olympic Games</li>
 									</ul>
 								</div>
 							</div>
@@ -119,12 +115,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">02. Process</h3>
 									<ul class="unordered-list">
-										<li>Prepare data matrix (pd.DataFrame)</li>
-										<li>Determine the formula</li>
-										<li>Encode qualitative variables</li>
-										<li>Formulate the data matrix as a linear programming (LP) problem</li>
-										<li>Solve the LP problem</li>
-										<li>Estimate the fuzzy coefficients in the formula</li>
+										<li>Utilize association rule learning methodology to find the most competitive sports for Taiwan</li>
+										<li>Apply random forest algorithm, Naive Bayes classifier, logistic regression, SVM to predict the potential medal winner, and use accuracy and F1 score as the evaluation criterion</li>
+										<li>Use decision tree to find the potential competitors of Taiwanese player</li>
 									</ul>
 								</div>
 							</div>
@@ -132,9 +125,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">03. Output</h3>
 									<ul class="unordered-list">
-										<li>Fitted model</li>
-										<li>Predicted values</li>
-										<li>The evaluation result like MAPE, R-square, and others.</li>
+										<li>the information of the most competitive sports for Taiwan</li>
+										<li>the prediction result of potential medal winner</li>
+										<li>the information of the potential competitors of Taiwan from different country</li>
 									</ul>
 								</div>
 							</div>
@@ -150,9 +143,7 @@
 				<div class="container">
 					<h3 class="text-heading">Benefit and Result</h3>
 					<ul class="unordered-list">
-						<li>The method can deal with fuzzy number (that is, value with uncertainty).</li>
-						<li>There is no any statistical assumption in fuzzy linear regression</li>
-						<li>The method is less sensitive to the potential outliers in dataset than ordinary least square method.</li>
+						<li>Offer additional information to the training center for Olympic Games in Taiwan</li>
 					</ul>
 				</div>
 			</section>

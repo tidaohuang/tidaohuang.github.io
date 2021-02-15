@@ -21,14 +21,14 @@
 			<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">					
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="../css/linearicons.css">
+			<link rel="stylesheet" href="../css/font-awesome.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<link rel="stylesheet" href="../css/magnific-popup.css">
+			<link rel="stylesheet" href="../css/nice-select.css">					
+			<link rel="stylesheet" href="../css/animate.min.css">
+			<link rel="stylesheet" href="../css/owl.carousel.css">
+			<link rel="stylesheet" href="../css/main.css">
 		</head>
 		<body>
 			<div class="protfolio-wrap">
@@ -37,7 +37,7 @@
 			<header class="default-header">
 				<nav class="navbar navbar-expand-lg  navbar-light">
 					<div class="container">
-						  <a class="navbar-brand" href="index.html">
+						  <a class="navbar-brand" href="..\index.html">
 						  	<img src="img/logo.svg" alt="">
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
 
 						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 						    <ul class="navbar-nav">
-								<li><a href="index.html">About</a></li>
-								<li><a href="story.html">Story</a></li>
-								<li><a href="portfolio.html">Portfolio</a></li>
-								<li><a href="assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
+								<li><a href="..\index.html">About</a></li>
+								<li><a href="..\story.html">Story</a></li>
+								<li><a href="..\portfolio.html">Portfolio</a></li>
+								<li><a href="..\assets\cv\tidao_huang_cv.pdf" target="_blank">CV download</a></li>
 						    </ul>
 						  </div>						
 					</div>
@@ -64,8 +64,10 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-60 col-lg-10">
 							<div class="title text-center">
-								<h1 class="mb-10 text-white">Implementation of Simplex Algorithm</h1>
-								<p>Linear Programming</p>
+								<h1 class="mb-10 text-white">An Implementation of Fuzzy Linear Regression Module
+									and its Application of Forecasting Electricity Demand
+									</h1>
+								<p>Fuzzy Linear Regression</p>
 							</div>
 						</div>
 					</div>	
@@ -79,12 +81,16 @@
 					<div class="row">
 						<div class="col-lg">
 							<div class="single-service">
-								<h3>Introduction</h3>
+								<h3>Abstract</h3>
 								<p>
-									After taking the course: Operation Research (I) and linear programming, I put an additional effort to build the Simplex algorithm with python. Users can input the decision variables, objective function (vector c), and constraints (matrix A and right hand side vector b). Then, the program will automatically solve the problem. However, the limitation of this program is that it can only solve the linear programming problem.
+									We implement a fuzzy linear regression module that can deal with quantitative variables and qualitative variables as well.  Moreover, we modify the LP formulation behind the fuzzy regression and increase its fitting performance. To evaluate the performance of the fuzzy linear regression module, we conduct an empirical analysis of forecasting the electricity demand of a manufacturing factory in Shanghai. The predictors include production quantity, quarter (Q1, Q2, Q3, and Q4), temperature, precipitation, and wind speed. Also, electricity usage is taken as response. The results based on training set and testing set show that mean absolute percentage error (MAPE) of fuzzy linear regression almost equals to that of OLS, which implies that fuzzy linear regression is as good as conventional regression methodology. However, without additional statistical assumption under fuzzy linear regression, fuzzy linear regression is easy to perform. If the assumption of conventional linear regression cannot be satisfied, then fuzzy linear regression may be a good alternative for researchers to take advantage of.
 									<br><br>
-									Completion time: Nov. 2019
+									Completion time: June, 2020
 								</p>
+								<div class="button-group-area">
+									<a href="..\assets\portfolio\document\fuzzy_regression.pdf" target="_blank"
+									   class="genric-btn primary e-large">view the full document</a>
+								</div>
 							</div>
 						</div>												
 					</div>
@@ -103,9 +109,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">01. Input</h3>
 									<ul class="unordered-list">
-										<li>decision variables</li>
-										<li>objective function</li>
-										<li>constraints (right hand side vector b, and matrix A)</li>
+										<li>The information of electric meter (CSV)</li>
+										<li>Electricity usage data (CSV format)</li>
+										<li>Production quantity data (CSV format)</li>
 									</ul>
 								</div>
 							</div>
@@ -113,10 +119,12 @@
 								<div class="single-defination">
 									<h3 class="mb-20">02. Process</h3>
 									<ul class="unordered-list">
-										<li>Transform the input data as proper form (in dictionary format of Simplex method)</li>
-										<li>Execute Simplex method to solve the problem</li>
-										<li>[Optional] conduct sensitivity analysis</li>
-										<li>[Optional] re-optimize the problem if any parameter is changed</li>
+										<li>Prepare data matrix (pd.DataFrame)</li>
+										<li>Determine the formula</li>
+										<li>Encode qualitative variables</li>
+										<li>Formulate the data matrix as a linear programming (LP) problem</li>
+										<li>Solve the LP problem</li>
+										<li>Estimate the fuzzy coefficients in the formula</li>
 									</ul>
 								</div>
 							</div>
@@ -124,7 +132,9 @@
 								<div class="single-defination">
 									<h3 class="mb-20">03. Output</h3>
 									<ul class="unordered-list">
-										<li>The solved solution (either optimal, infeasible, or infinite solution)and the value of its decision variables</li>
+										<li>Fitted model</li>
+										<li>Predicted values</li>
+										<li>The evaluation result like MAPE, R-square, and others.</li>
 									</ul>
 								</div>
 							</div>
@@ -140,9 +150,10 @@
 				<div class="container">
 					<h3 class="text-heading">Benefit and Result</h3>
 					<ul class="unordered-list">
-						<li>The problem for optimization in the real world can be easily solved if the dimension of the problem is not extremely large and the problem is the linear programming not integer programming or mixed integer programming.</li>
+						<li>The method can deal with fuzzy number (that is, value with uncertainty).</li>
+						<li>There is no any statistical assumption in fuzzy linear regression</li>
+						<li>The method is less sensitive to the potential outliers in dataset than ordinary least square method.</li>
 					</ul>
-
 				</div>
 			</section>
 			<!-- End Benefit and Result Area -->
