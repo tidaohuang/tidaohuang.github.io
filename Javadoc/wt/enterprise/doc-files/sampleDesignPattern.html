@@ -1,0 +1,1517 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="sampleDesignPattern_files/filelist.xml">
+<link rel=Edit-Time-Data href="sampleDesignPattern_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Design Note for Windchill Architecture Team Issue #981012-28</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="date"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>dwachutka</o:Author>
+  <o:Template>DesignPatternsTemplate3.dot</o:Template>
+  <o:LastAuthor>dwachutka</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>1418</o:TotalTime>
+  <o:LastPrinted>2005-02-01T20:57:00Z</o:LastPrinted>
+  <o:Created>2005-02-02T20:41:00Z</o:Created>
+  <o:LastSaved>2005-02-02T20:41:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1641</o:Words>
+  <o:Characters>9355</o:Characters>
+  <o:Company>Windchill Technology</o:Company>
+  <o:Lines>77</o:Lines>
+  <o:Paragraphs>21</o:Paragraphs>
+  <o:CharactersWithSpaces>10975</o:CharactersWithSpaces>
+  <o:Version>10.6714</o:Version>
+ </o:DocumentProperties>
+ <o:CustomDocumentProperties>
+  <o:_AdHocReviewCycleID dt:dt="float">121954875</o:_AdHocReviewCycleID>
+  <o:_EmailSubject dt:dt="string">Docs for Patterns</o:_EmailSubject>
+  <o:_AuthorEmail dt:dt="string">CGruber@ptc.com</o:_AuthorEmail>
+  <o:_AuthorEmailDisplayName dt:dt="string">Gruber, Carrie</o:_AuthorEmailDisplayName>
+  <o:_ReviewingToolsShownOnce dt:dt="string"></o:_ReviewingToolsShownOnce>
+ </o:CustomDocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:ActiveWritingStyle Lang="EN-US" VendorID="64" DLLVersion="131077"
+   NLCheck="1">3</w:ActiveWritingStyle>
+  <w:ActiveWritingStyle Lang="EN-US" VendorID="64" DLLVersion="131078"
+   NLCheck="1">1</w:ActiveWritingStyle>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Times;
+	panose-1:2 2 6 3 5 4 5 2 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:"Body Text";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-list:l2 level1 lfo2;
+	tab-stops:list 0in;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:27.0pt;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-list:l2 level2 lfo2;
+	tab-stops:list 27.0pt;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-list:l2 level3 lfo2;
+	tab-stops:list 0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:normal;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-list:l2 level4 lfo2;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h5
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	mso-list:l2 level5 lfo2;
+	tab-stops:list 0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:normal;}
+h6
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	mso-list:l2 level6 lfo2;
+	tab-stops:list 1.0in;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:7;
+	mso-list:l2 level7 lfo2;
+	tab-stops:list 0in;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	mso-list:l2 level8 lfo2;
+	tab-stops:list 0in;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-indent:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	mso-list:l2 level9 lfo2;
+	tab-stops:list 0in;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin-top:3.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.Boldheading, li.Boldheading, div.Boldheading
+	{mso-style-name:"Bold heading";
+	mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Helvetica;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.APIDoc, li.APIDoc, div.APIDoc
+	{mso-style-name:APIDoc;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l9 level1 lfo4;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-page-numbers:1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:51394920;
+	mso-list-type:hybrid;
+	mso-list-template-ids:87298312 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:152256714;
+	mso-list-template-ids:-1858179702;}
+@list l1:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:252588516;
+	mso-list-template-ids:-303300180;}
+@list l2:level1
+	{mso-level-style-link:"Heading 1";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level2
+	{mso-level-style-link:"Heading 2";
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:27.0pt;
+	mso-level-number-position:left;
+	margin-left:27.0pt;
+	text-indent:0in;}
+@list l2:level3
+	{mso-level-style-link:"Heading 3";
+	mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level4
+	{mso-level-style-link:"Heading 4";
+	mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;
+	mso-ansi-font-size:10.0pt;}
+@list l2:level5
+	{mso-level-style-link:"Heading 5";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level6
+	{mso-level-style-link:"Heading 6";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level7
+	{mso-level-style-link:"Heading 7";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level8
+	{mso-level-style-link:"Heading 8";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l2:level9
+	{mso-level-style-link:"Heading 9";
+	mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3
+	{mso-list-id:529029234;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1819007812 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:698506292;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-412447998 1716312038 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:889657968;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1264915320 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:1235894913;
+	mso-list-template-ids:-303300180;}
+@list l6:level1
+	{mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level2
+	{mso-level-text:"%1\.%2";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level4
+	{mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;
+	mso-ansi-font-size:10.0pt;}
+@list l6:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l6:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:0in;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l7
+	{mso-list-id:1321036697;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1888629626 1303828362 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	margin-left:2.0in;
+	text-indent:-.25in;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@list l8
+	{mso-list-id:1483811768;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-373770824 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l8:level1
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l8:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l8:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:1754932726;
+	mso-list-type:hybrid;
+	mso-list-template-ids:158753514 1901496666 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:APIDoc;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l9:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l9:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="12290"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoTitle style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>Sample
+Design Pattern<br>
+Subject: Design Patterns</p>
+
+<p class=Author style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>By:
+David Wachutka</p>
+
+<p class=Boldheading style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='layout-grid-mode:line'>Change History:</span><span style='font-family:
+Times;color:black;layout-grid-mode:line'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:2.0pt;border-collapse:collapse;mso-padding-alt:0in 2.0pt 0in 2.0pt'>
+ <tr style='mso-yfti-irow:0;height:14.8pt'>
+  <td width=90 valign=top style='width:67.5pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;font-family:Times;
+  color:black;layout-grid-mode:line'>Date<o:p></o:p></span></b></p>
+  </td>
+  <td width=126 valign=top style='width:94.5pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;font-family:Times;
+  color:black;layout-grid-mode:line'>Author<o:p></o:p></span></b></p>
+  </td>
+  <td width=363 valign=top style='width:272.0pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><span
+  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;font-family:Times;
+  color:black;layout-grid-mode:line'>Description<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:14.8pt'>
+  <td width=90 valign=top style='width:67.5pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><st1:date Year="2004" Day="15"
+  Month="12"><span style='font-size:8.0pt;mso-bidi-font-size:10.0pt;font-family:
+   Times;color:black;layout-grid-mode:line'>12/15/04</span></st1:date><span
+  style='font-size:8.0pt;mso-bidi-font-size:10.0pt;font-family:Times;
+  color:black;layout-grid-mode:line'><o:p></o:p></span></p>
+  </td>
+  <td width=126 valign=top style='width:94.5pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><span style='font-size:8.0pt;
+  mso-bidi-font-size:10.0pt;font-family:Times;color:black;layout-grid-mode:
+  line'>David Wachutka<o:p></o:p></span></p>
+  </td>
+  <td width=363 valign=top style='width:272.0pt;padding:0in 2.0pt 0in 2.0pt;
+  height:14.8pt'>
+  <p class=MsoNormal style='margin-left:2.15pt;line-height:12.0pt;mso-pagination:
+  lines-together;page-break-after:avoid'><span style='font-size:8.0pt;
+  mso-bidi-font-size:10.0pt;font-family:Times;color:black;layout-grid-mode:
+  line'>Initial version<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=Boldheading style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>References</p>
+
+<p class=MsoNormal><a href="http://java.sun.com/j2ee/1.4/docs/api/index.html">Sun
+Javadoc 1.4</a></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><a href="DesignPatternsIndex.html">Design Patterns Index</a><o:p></o:p></p>
+
+<p class=Author style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+class=MsoHyperlink><a
+href="http://windchillweb.mn.ptc.com/DevelopmentLibrary/Cookbook/CodingGuidelines/PackageJavadoc.html">Development
+Cookbook - Writing package level javadoc</a><o:p></o:p></span></p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Pattern Name and Classification</h1>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Name</h2>
+
+<p class=MsoNormal>Sample Design Pattern </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Classification</h2>
+
+<p class=MsoNormal>Core Concept Design</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Intent</h1>
+
+<p class=MsoBodyText>This document provides an example of a design pattern to
+assist developers in creating design patterns integrated with javadoc.</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Also Known As</h1>
+
+<p class=MsoBodyText>Design Pattern Design Pattern </p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span
+style='mso-spacerun:yes'> </span>Motivation</h1>
+
+<p class=MsoBodyText>The development organization does not have well-defined
+and/or well-maintained design patterns for how to implement common Windchill
+features.<span style='mso-spacerun:yes'>   </span>By using design patterns more
+explicitly in our development process will have the following benefits:</p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Improve the quality of code by reusing the knowledge
+and experience of peers</p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Stimulate creativity by allowing people to focus
+on solving their particular application problem, rather than spending lots of
+time reinventing the wheel</p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Improve developers’ understanding of a piece of
+code they want to reuse so they don’t blindly cut and paste it. This will cut
+down on inappropriate uses of the code and on the propagation of bad code.</p>
+
+<p class=MsoBodyText>Developers will need to develop design patterns in a
+consistent format to make them most usable for other developers.<span
+style='mso-spacerun:yes'>  </span>The design pattern should also be integrated
+into javadoc to limit the number of places developers need to go for
+information. This approach should also help keep the patterns updated and in
+line with current API documentation, as well as to easily allow links between
+patterns and regular JavaDoc. </p>
+
+<p class=MsoBodyText>This design pattern should help developers understand the
+expected content of the design patterns and also show some examples for
+including images from Rose, and linking into javadoc.</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Applicability</h1>
+
+<p class=MsoBodyText>This design pattern should be used as a reference for
+developers who are creating design patterns.<span style='mso-spacerun:yes'>
+</span>This design pattern should also help to answer the following questions:</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l8 level1 lfo8;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>What content should be included in a design pattern?</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l8 level1 lfo8;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>How would images be added in a design pattern?</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l8 level1 lfo8;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>How would one establish links between the design
+pattern and javadoc?</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Structure</h1>
+
+<p class=MsoBodyText>This is a section where it might be useful to include an
+image (such as a Rose diagram).<span style='mso-spacerun:yes'>  </span>Here is
+an example of how to include an image in a design pattern.</p>
+
+<p class=MsoBodyText><img border=0 width=654 height=243 id="_x0000_i1025"
+src=partSignature.JPG></p>
+
+<p class=MsoBodyText>To include the image shown above in this page the
+following steps were taken. (For this example the package is com.ptc.foo.)</p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l5 level1 lfo10;
+tab-stops:list .5in'><![if !supportLists]><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Create a directory named &quot;doc-files&quot; in your
+package directory (if it doesn’t already exist).&nbsp; The directory <b><span
+style='color:#CC0000'>must</span> </b>be named “doc-files”
+...com\ptc\foo\doc-files.<span style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l5 level1 lfo10;
+tab-stops:list .5in'><![if !supportLists]><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Save any images you are including in the design pattern
+to the doc-files directory ...com\ptc\foo\doc-files\image.gif </p>
+
+<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l5 level1 lfo10;
+tab-stops:list .5in'><![if !supportLists]><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Insert the image into the design pattern document using
+“Insert/Picture/From File”:</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l5 level2 lfo10;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Select the image you want to insert from the doc-files
+directory.</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l5 level2 lfo10;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><![endif]>It
+is <b style='mso-bidi-font-weight:normal'><span style='color:red'>essential</span></b>
+that you select “Link to File”.<span style='mso-spacerun:yes'>  </span>Do <b
+style='mso-bidi-font-weight:normal'><span style='color:red'>not</span></b>
+select “Insert” or “Insert and Link”.</p>
+
+<p class=MsoBodyText style='margin-left:1.0in;text-indent:-.25in;mso-list:l5 level2 lfo10;
+tab-stops:list 1.0in'><![if !supportLists]><span style='mso-list:Ignore'>c.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Word will automatically shrink the image to fit within
+the margins, but we do not want that (the image will not display well).&nbsp;
+Right-click the picture in Word and select the &quot;Size&quot; tab.&nbsp;
+Under &quot;Scale&quot;, set the &quot;Height&quot; and &quot;Width&quot; to
+&quot;100%&quot;, and then click &quot;OK&quot;.</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Participants</h1>
+
+<p class=MsoBodyText>The classes and/or objects participating in the design
+pattern and their responsibilities.<span style='mso-spacerun:yes'>  </span>(Not
+applicable for the sample design pattern)</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Collaborations</h1>
+
+<p class=MsoBodyText>How the participants collaborate to carry out their
+responsibilities.<span style='mso-spacerun:yes'>  </span>(Not applicable for
+the sample design pattern)</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Consequences</h1>
+
+<p class=MsoBodyText>By using this design pattern as a reference, you should be
+able to more quickly solve the tricky problems of linking to javadoc or adding
+images to your design pattern.<span style='mso-spacerun:yes'>
+</span>Additionally, this design pattern should help somewhat with the type of
+content that is expected for each section of the design pattern.<span
+style='mso-spacerun:yes'>  </span>By choosing not to use this design pattern
+you may find a better way of accomplishing these tasks or you may run into any
+number of problems trying to complete your design pattern with the desired
+images and javadoc links.</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Implementation</h1>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Design Pattern Implementation Checklist</h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ol style='margin-top:0in' start=3 type=1>
+ <ol style='margin-top:0in' start=3 type=a>
+  <ol style='margin-top:0in' start=1 type=1>
+   <li class=MsoNormal style='mso-list:l5 level3 lfo10;tab-stops:list 1.5in'>Create
+       design pattern content</li>
+   <li class=MsoNormal style='mso-list:l5 level3 lfo10;tab-stops:list 1.5in'>Add
+       necessary links to the design pattern in javadoc, and also links to
+       javadoc from the design pattern</li>
+   <li class=MsoNormal style='mso-list:l5 level3 lfo10;tab-stops:list 1.5in'>Add
+       a link to your design pattern in the Design Patterns Index file.</li>
+   <li class=MsoNormal style='mso-list:l5 level3 lfo10;tab-stops:list 1.5in'>Checkin
+       all materials</li>
+  </ol>
+ </ol>
+</ol>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Design Pattern (.doc and .html formats)</p>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Any images used in the design pattern</p>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Any packages that have changed or were added</p>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Design Pattern Index file</p>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Package overview javadoc html files</p>
+
+<p class=MsoNormal style='margin-left:2.0in;text-indent:-.25in;mso-list:l7 level1 lfo17;
+tab-stops:list 2.0in'><![if !supportLists]><span style='mso-list:Ignore'>-<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Any other .java files where links were added to the
+javadoc<o:p></o:p></p>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.2<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Creating the design pattern</h2>
+
+<p class=MsoBodyText>A good way of implementing the design pattern is by using
+MS Word to create the document.<span style='mso-spacerun:yes'>  </span>The
+document can then be saved as a web page to create the html format. </p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>1) </span>Create a directory named &quot;doc-files&quot; in
+your package directory (if it doesn’t already exist).&nbsp; The directory <b><span
+style='color:#CC0000'>must</span> </b>be named “doc-files”.<span
+style='mso-spacerun:yes'>  </span><span style='color:black'>(In this example,
+the package is com.ptc.foo.)</span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+text-indent:.5in'>...\com\ptc\foo\doc-files<span style='color:black'><br>
+<br>
+2) Create your design pattern using MS Word.<span style='mso-spacerun:yes'>
+</span>The document should be saved in the doc-files directory of the package.<span
+style='mso-spacerun:yes'>  </span>The name of the document should describe the
+functionality the design pattern is supposed to help implement.&nbsp; (i.e.
+Container-based Query)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+text-indent:.5in'><span style='color:black'>...\com\ptc\foo\doc-files\&lt;designPatternName&gt;.doc<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>3) Add links to javadoc in your design pattern where
+appropriate.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'><span style='mso-tab-count:1'>                </span>(See
+section 11.1)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'>4)
+Save the <span style='color:black'>&lt;designPatternName&gt;.doc</span> as
+&quot;<span style='color:black'>&lt;designPatternName&gt;</span>.html&quot;
+using “File / Save as Web Page...”.<span style='color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+text-indent:.5in'><span style='color:black'>...\com\ptc\foo\doc-files\&lt;designPatternName&gt;.html<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto'><span
+style='color:black'>5) Checkin all the files:<o:p></o:p></span></p>
+
+<ol start=1 type=1>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo13;tab-stops:list .5in'>...\com\ptc\foo\doc-files\&lt;designPatternName&gt;.html<o:p></o:p></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo13;tab-stops:list .5in'>...\com\ptc\foo\doc-files\&lt;designPatternName&gt;.doc<o:p></o:p></li>
+ <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo13;tab-stops:list .5in'><span style='color:
+     windowtext'>...\com\ptc\foo\doc-files</span><o:p></o:p></li>
+</ol>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.3<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Add Links to your Design Pattern in javadoc</h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>A link to your design pattern should be placed in the
+package summary section of the package where you check in your design patten.<span
+style='mso-spacerun:yes'>  </span>Additional links should be placed in any
+other relevant packages, classes, or methods.<span style='mso-spacerun:yes'>
+</span>To add links to your design pattern from javadoc do the following:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Add a standard html link in the javadoc comments section of
+the file:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>&lt;A HREF=”doc-files/&lt;designPatternName&gt;.html”&gt;Windchill
+Design Patterns: &lt;Design Pattern Name&gt;&lt;/A&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The path to the design pattern is relative to the package
+where you’re adding the link.<span style='mso-spacerun:yes'>  </span>If your
+design pattern is in the same package as the java class your adding a link to,
+it should look like the example above.<span style='mso-spacerun:yes'>
+</span>Otherwise the path is relative to the package where the java class is
+located.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Adding a link in a
+package summary file:<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Identify the package summary html file (if one exists).<span
+style='mso-spacerun:yes'>  </span>Probably named something like “package.html”.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The link should be added in the html file at the bottom of
+the page, but above the footer.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If there is a corresponding “package.doc” file with the html
+version the package summary was created using MS Word and then the “Save As Web
+Page” technique.<span style='mso-spacerun:yes'>  </span>In this case add a
+placeholder link in the .doc version and then do another “Save As Web
+Page”.<span style='mso-spacerun:yes'>  </span>You can then search for the place
+holder you added in the html version and replace it with the proper relative
+link to the design pattern.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Adding a link in a java
+file:<o:p></o:p></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal>When adding a link to the design pattern in a java file, add
+the link the javadoc comments section of the file.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Example:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Here is a comment section of the SavedQuery class.<span
+style='mso-spacerun:yes'>  </span>Add the link to the design pattern as shown
+below highlighted in red.<span style='mso-spacerun:yes'>  </span>Remember the
+path to the design pattern is relative to the package where you are adding the
+link.<span style='mso-spacerun:yes'>  </span>In the case below the design
+pattern is located in the doc-files directory of the class where the link is
+being added.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>//##begin SavedQuery%3DDD4F4D0258.doc preserve=no</p>
+
+<p class=MsoNormal>/**</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>* &lt;p&gt;</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>* Use the
+&lt;code&gt;newSavedQuery&lt;/code&gt; static factory method(s), not the</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*
+&lt;code&gt;SavedQuery&lt;/code&gt; constructor, to construct instances of this
+class.</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*<span
+style='mso-spacerun:yes'>  </span>Instances must be constructed using the
+static factory(s), in order</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>* to ensure proper
+initialization of the instance.</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>* &lt;p&gt;</p>
+
+<p class=MsoNormal><span style='color:red'><span
+style='mso-spacerun:yes'> </span>*&lt;A HREF=&quot;doc-files/&lt;designPatternName&gt;.html&quot;&gt;Windchill
+Design Patterns: &lt;DesignPatternName&gt;&lt;/A&gt; <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='color:red'><span
+style='mso-spacerun:yes'> </span>*&lt;BR&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*
+&lt;BR&gt;&lt;BR&gt;&lt;B&gt;Supported API: &lt;/B&gt;false</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*
+&lt;BR&gt;&lt;BR&gt;&lt;B&gt;Extendable: &lt;/B&gt;false</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>*</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>* @version<span
+style='mso-spacerun:yes'>   </span>1.0</p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span>**/</p>
+
+<p class=MsoNormal>//##end SavedQuery%3DDD4F4D0258.doc</p>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>4.4<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Add your Design Pattern to Design Patterns Index</h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>There is a Design Patterns Index page that lists all the
+design patterns alphabetically.<span style='mso-spacerun:yes'>  </span>There is
+a link to the design patterns index page from the javadoc overview page.<span
+style='mso-spacerun:yes'>  </span>When you create a new design pattern you
+should add the design pattern to the index page.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The Design Pattern Index file is located at:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Windchill\src\wt\enterprise\doc-files\DesignPatternsIndex.html</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ol style='margin-top:0in' start=3 type=1>
+ <ol style='margin-top:0in' start=1 type=1>
+  <li class=MsoNormal style='mso-list:l0 level2 lfo13;tab-stops:list 1.0in'>Checkout
+      the design pattern index file</li>
+  <li class=MsoNormal style='mso-list:l0 level2 lfo13;tab-stops:list 1.0in'>Add
+      a link to your design pattern</li>
+  <li class=MsoNormal style='mso-list:l0 level2 lfo13;tab-stops:list 1.0in'>Checkin
+      the updated index file<o:p></o:p></li>
+ </ol>
+</ol>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>For organizational purposes the design patterns index file
+is maintained with the design pattern links shown in alphabetical order based
+on the name.<span style='mso-spacerun:yes'>  </span>Please add the link to your
+design pattern accordingly.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Example of adding a design pattern to the index file:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>For this example the design pattern is named Saved Query
+Design Pattern and is located at
+wt/query/doc-files/savedQueryDesignPattern.html</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Insert the following line in the Index html file:</p>
+
+<p class=MsoNormal>&lt;A HREF=&quot;../../query/doc-files/ savedQueryDesignPattern.html
+&quot;&gt;Saved Query Design Pattern&lt;/A&gt;&lt;br&gt;</p>
+
+<p class=MsoNormal>&lt;br&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>*The path to the
+design pattern in the index file is relative to src/wt/enterprise/doc-files.<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If your design pattern was Rware Search Design Pattern and
+was located at
+com/ptc/windchill/enterprise/search/server/doc-files/rwareSearchDesignPattern.html</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The link in the index file would now look like this:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>&lt;A
+HREF=&quot;../../../com/ptc/windchill/enterprise/search/server/doc-files/ rwareSearchDesignPattern.html
+&quot;&gt;Rware Search Design Pattern&lt;/A&gt;&lt;br&gt;</p>
+
+<p class=MsoNormal>&lt;br&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Sample Code</h1>
+
+<h2 style='text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>5.1<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Linking to javadoc from the design pattern</h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>To add a link to the javadoc of a specific class from your
+design pattern follow these steps:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If you are creating the design pattern using MS Word you won’t
+be able to add a relative link to the design pattern in the word document.<span
+style='mso-spacerun:yes'>  </span>Instead add a temporary placeholder in the
+document as shown below.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>&lt;Link to Saved Query Javadoc&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Then after you do the “Save As Web Page...” you can search
+for that placeholder in the html file and replace it with the proper relative
+link.<span style='mso-spacerun:yes'>  </span>In this case it would be something
+like this.<o:p></o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>&lt;A HREF=”../../query/SavedQuery.html”&gt;Link to
+SavedQuery Javadoc&lt;/A&gt;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>(This example assumes the design pattern is in
+src/wt/enterprise/doc-files)<o:p></o:p></p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Known Uses</h1>
+
+<p class=MsoBodyText>This design pattern is used by developers to assist in
+creating design patterns and integrating with javadoc.</p>
+
+<h1 style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;margin-left:0in;
+text-indent:0in'><![if !supportLists]><span style='mso-fareast-font-family:
+Arial;mso-bidi-font-family:Arial'><span style='mso-list:Ignore'>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Related Patterns </h1>
+
+<p class=MsoBodyText>This design pattern is not related to any others.</p>
+
+</div>
+
+</body>
+
+</html>

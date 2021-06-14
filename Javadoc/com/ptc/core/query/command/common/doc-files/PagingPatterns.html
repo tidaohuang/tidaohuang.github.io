@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Meta Query Architecture</TITLE>
+</HEAD>
+<BODY LINK="#0000ff">
+
+<B><FONT FACE="Arial" SIZE=4><P>Paging Patterns</P>
+</B></FONT><FONT SIZE=2><P>Queries can always involve paging, either implicitly or explicitly.   Therefore, callers must be prepared to handle results in terms of paging.   The following code samples describe the patterns applicable to executing queries.</P>
+</FONT><B><I><FONT FACE="Arial"><P>Implicit Paging</P>
+</B></I></FONT><FONT SIZE=2><P>This code sample does not explicitly specify offsets and counts for paging.  However, it does handle results that may be paged.  Complete results are processed by fetching until all AttributeContainers are processed.  This code would be used where the user or another client mechanism may cancel result processing between fetch commands.</P>
+
+</FONT>
+
+<CODE><PRE>
+boolean quit = false;
+
+BasicFetchPagingRepositoryCommand fetch = new BasicFetchPagingRepositoryCommand();
+fetch.setPageMode(PageMode.IMPLICIT_PAGING);
+
+BasicQueryCommand query = ..;
+query.setPageMode(PageMode.IMPLICIT_PAGING);
+query = (BasicQueryCommand) query.execute(); 
+ResultContainer results = query.getResultContainer();
+BasicTypePagingSession pagingSession = (BasicTypePagingSession) query.getResultSession();
+
+try
+{
+   while(true)
+   {
+      // Process TypeInstances
+
+      if(results.getSize() == 0)
+      {
+         break;
+      }
+
+      // Allow user to cancel processing for the rest of the results
+      quit = ..;
+      if(quit)
+      {
+         break;
+      }
+
+      fetch.setSession(pagingSession);
+      fetch = (BasicFetchPagingRepositoryCommand) fetch.execute();
+      results = fetch.getResultContainer(); 
+      pagingSession = (BasicTypePagingSession) fetch.getResultSession();
+   }
+}
+finally
+{
+   BasicClosePagingRepositoryCommand close = new BasicClosePagingRepositoryCommand();
+   close.setSession(pagingSession);
+   close.execute();
+}
+
+
+</PRE></CODE>
+
+<B><I><FONT FACE="Arial"><P>Explicit Paging</P>
+</B></I></FONT><FONT SIZE=2><P>This code sample explicitly specifies offsets and counts for each request.  The PagingSession is always active unless it is explicitly closed.  This code would be used where the results are interactively fetched  (e.g. a search user interface that allows the user to control the offset and count for the number of items to retrieve).</P>
+
+</FONT>
+
+<CODE><PRE>
+String status;
+int offset = 0;
+int count = 50;
+boolean quit = false;
+
+BasicFetchPagingRepositoryCommand fetch = new BasicFetchPagingRepositoryCommand();
+fetch.setPageMode(PageMode.EXPLICIT_PAGING);
+
+BasicQueryCommand query = ..;
+query.setPageMode(PageMode.EXPLICIT_PAGING);
+query.setOffset(offset);
+query.setCount(count);
+query = (BasicQueryCommand) query.execute(); 
+ResultContainer results = query.getResultContainer();
+BasicTypePagingSession pagingSession = (BasicTypePagingSession) query.getResultSession();
+int totalCount = (pagingSession == null) ? 0 : pagingSession.getTotalCount();
+
+try
+{
+   while(true)
+   {
+      int start = offset;
+      int end = offset + pagingSession.getCount();
+      status = "Fetched " + start + " to " + end + " of " + totalCount;
+
+      // Process Attribute Containers
+
+      // Prompt user for new fetch values or to quit
+      offset = ..;
+      count = ..;
+      quit = ..;
+      if(quit)
+      {
+         break;
+      }
+
+      fetch.setSession(pagingSession);
+      fetch.setOffset(offset);
+      fetch.setCount(count);
+      fetch = (BasicFetchPagingRepositoryCommand) fetch.execute(); 
+      results = fetch.getResultContainer(); 
+      pagingSession = (BasicTypePagingSession) fetch.getResultSession();
+   }
+}
+finally
+{
+   BasicClosePagingRepositoryCommand close = new BasicClosePagingRepositoryCommand();
+   close.setSession(pagingSession);
+   close.execute();
+}
+</PRE></CODE>
+
+</BODY>
+</HTML>

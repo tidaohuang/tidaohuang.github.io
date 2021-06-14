@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<title>Reporting QueryBuilder Model</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+
+<h1 align="Center">Reporting QueryBuilder Model</h1>
+<span><img width=1100 height=600  src="ReportingJoinModel.png"></span><br><br>
+
+
+<dl>
+
+<dt><a href="../../../../index.html?wt/query/template/ReportTemplate.html" title="class in wt.query.template">ReportTemplate</a></dt>
+<dd>This class implements a template for report queries.  It contains a query XML attribute that stores the definition of a report query.
+This class is an administrative template accessed throught the Utilities tab and is typically used by users in a report author role.
+</dd>
+
+<dt><a href="../../../../index.html?wt/query/template/ReportCriteria.html" title="class in wt.query.template">SavedReport (ReportCriteria)</a></dt>
+<dd>This class is used to persistently store the saved criteria for a report.  These are the selections, operators, and values entered on the 
+ReportBuilder user interface.  Each instance is associated to a ReportTemplate.  This is the ReportTemplate that the saved input criteria are applicable to.
+Instances of this class are accessed by all end users through the Reports tab. 
+</dd>
+
+<dt><a href="../../../../index.html?wt/query/template/ReportTemplateViewLink.html" title="class in wt.query.template">ReportTemplate to ReportTemplate View Link</a></dt>
+<dd>This link class maintains the association between a ReportTemplate and a ReportTemplate view that it references in its report definition QML.  The source role
+references the ReportTemplate that contains a ReportView in its QML.  The target role references the ReportTemplate that is used as a ReportTemplate View.
+</dd>
+
+<dt><a href="../../../../index.html?com/ptc/windchill/enterprise/report/_Report.html" title="class in com.ptc.windchill.enterprise.report">Report</a></dt>
+<dd>This class represents an executable report.  This can mean an internal Info*Engine report task, a ReportTemplate, or a report in an external reporting system.
+If the report represents the execution of a ReportTemplate, then it will have a valid reference to a ReportTemplate.   Instances of this class are accessed by 
+all end users through the Reports tab.
+</dd>
+
+<dt><a href="../../../../index.html?com/ptc/windchill/enterprise/datamonitor/DataMonitor.html" title="class in com.ptc.windchill.enterprise.datamonitor">Data Monitor</a></dt>
+<dd>This class represents the configuration of a periodic execution of a report.  The execution result data is monitored and can trigger notifications based on 
+a threshold value.  Each instance is associated with a Saved Report (Report Criteria) that holds the input selections and criteria values along with a reference to
+the ReportTemplate for execution.  Instances of this class are accessed by all end users through the Reports tab.
+</dd>
+
+</dl>
+
+
+</body>
+
+</html>

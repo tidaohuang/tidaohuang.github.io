@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_YNd-8WSxEeGFrswRgF0qtw" name="Model">
+  <packageImport xmi:id="_YNd-8mSxEeGFrswRgF0qtw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_8lNNAGSxEeGFrswRgF0qtw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Z-Yi8GSxEeGFrswRgF0qtw" name="SecurityLabel">
+    <ownedAttribute xmi:id="_pljsIGSxEeGFrswRgF0qtw" name="enabled" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_vqUq8GSxEeGFrswRgF0qtw" name="customLabel" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Sm_pMGSyEeGFrswRgF0qtw" name="SecurityLabelValue">
+    <ownedAttribute xmi:id="_VaazEGSyEeGFrswRgF0qtw" name="enabled" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_X0_YEGSyEeGFrswRgF0qtw" name="unrestrictedPrincipal" visibility="protected" type="_qGKpYGSyEeGFrswRgF0qtw"/>
+    <ownedAttribute xmi:id="_ZCzPAGSyEeGFrswRgF0qtw" name="agreementType" visibility="protected" type="_ufy8EGSyEeGFrswRgF0qtw"/>
+    <ownedAttribute xmi:id="_Z4T6sGSyEeGFrswRgF0qtw" name="evaluatorClass" visibility="protected" type="_ysLc8GSyEeGFrswRgF0qtw"/>
+    <ownedAttribute xmi:id="_be-WgGSyEeGFrswRgF0qtw" name="translatorClass" visibility="protected" type="_10R2UGSyEeGFrswRgF0qtw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qGKpYGSyEeGFrswRgF0qtw" name="WTPrincipalReference"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ufy8EGSyEeGFrswRgF0qtw" name="TypeIdentifier"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ysLc8GSyEeGFrswRgF0qtw" name="UnrestrictedPrincipalEvaluator"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_10R2UGSyEeGFrswRgF0qtw" name="CustomSecurityLabelValueTranslator"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_53l6w2SyEeGFrswRgF0qtw" name="" memberEnd="_53l6xGSyEeGFrswRgF0qtw _53l6wGSyEeGFrswRgF0qtw" navigableOwnedEnd="_53l6wGSyEeGFrswRgF0qtw">
+    <ownedEnd xmi:id="_53l6xGSyEeGFrswRgF0qtw" name="securityLabel" type="_Z-Yi8GSxEeGFrswRgF0qtw" association="_53l6w2SyEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_53l6xWSyEeGFrswRgF0qtw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_53l6xmSyEeGFrswRgF0qtw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_53l6wGSyEeGFrswRgF0qtw" name="securityLabelValue" type="_Sm_pMGSyEeGFrswRgF0qtw" aggregation="composite" association="_53l6w2SyEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_53l6wWSyEeGFrswRgF0qtw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_53l6wmSyEeGFrswRgF0qtw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_p2v34GSzEeGFrswRgF0qtw" name="SecurityLabelsConfiguration">
+    <ownedAttribute xmi:id="_Eu4X8GS0EeGFrswRgF0qtw" name="enabled" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qxELEGSzEeGFrswRgF0qtw" name="AgreementConfiguration">
+    <ownedAttribute xmi:id="_-JQHwGSzEeGFrswRgF0qtw" name="enabled" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_sPZKQ2SzEeGFrswRgF0qtw" name="" memberEnd="_sPZKRGSzEeGFrswRgF0qtw _sPZKQGSzEeGFrswRgF0qtw" navigableOwnedEnd="_sPZKQGSzEeGFrswRgF0qtw">
+    <ownedEnd xmi:id="_sPZKRGSzEeGFrswRgF0qtw" name="securityLabelsConfiguration" type="_p2v34GSzEeGFrswRgF0qtw" association="_sPZKQ2SzEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPZKRWSzEeGFrswRgF0qtw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sPZKRmSzEeGFrswRgF0qtw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_sPZKQGSzEeGFrswRgF0qtw" name="agreementConfiguration" type="_qxELEGSzEeGFrswRgF0qtw" aggregation="composite" association="_sPZKQ2SzEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPZKQWSzEeGFrswRgF0qtw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sPZKQmSzEeGFrswRgF0qtw"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_1iyBM2SzEeGFrswRgF0qtw" name="" memberEnd="_1iyBNGSzEeGFrswRgF0qtw _1iyBMGSzEeGFrswRgF0qtw" navigableOwnedEnd="_1iyBMGSzEeGFrswRgF0qtw">
+    <ownedEnd xmi:id="_1iyBNGSzEeGFrswRgF0qtw" name="securityLabelsConfiguration" type="_p2v34GSzEeGFrswRgF0qtw" association="_1iyBM2SzEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1iyBNWSzEeGFrswRgF0qtw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1iyBNmSzEeGFrswRgF0qtw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_1iyBMGSzEeGFrswRgF0qtw" name="securityLabel" type="_Z-Yi8GSxEeGFrswRgF0qtw" aggregation="composite" association="_1iyBM2SzEeGFrswRgF0qtw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1iyBMWSzEeGFrswRgF0qtw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1iyBMmSzEeGFrswRgF0qtw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

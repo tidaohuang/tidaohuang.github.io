@@ -1,0 +1,878 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 9">
+<link rel=File-List href="./QueryFunctions_files/filelist.xml">
+<link rel=Edit-Time-Data href="./QueryFunctions_files/editdata.mso">
+<link rel=OLE-Object-Data href="./QueryFunctions_files/oledata.mso">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>jsthompson</o:Author>
+  <o:LastAuthor>jsthompson</o:LastAuthor>
+  <o:Created>2006-03-28T16:49:28Z</o:Created>
+  <o:LastSaved>2006-07-03T17:44:09Z</o:LastSaved>
+  <o:Company>PTC</o:Company>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:DownloadComponents/>
+  <o:LocationOfComponents HRef="file:msowc.cab"/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:1.0in .75in 1.0in .75in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;}
+.font0
+	{color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl24
+	{mso-style-parent:style0;
+	font-weight:700;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;}
+.xl25
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:none;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;}
+.xl26
+	{mso-style-parent:style0;
+	vertical-align:top;}
+.xl27
+	{mso-style-parent:style0;
+	vertical-align:top;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl28
+	{mso-style-parent:style0;
+	border:.5pt solid windowtext;}
+.xl29
+	{mso-style-parent:style0;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl30
+	{mso-style-parent:style0;
+	vertical-align:top;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl31
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl32
+	{mso-style-parent:style0;
+	font-weight:700;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	border:1.5pt solid windowtext;
+	white-space:normal;}
+.xl33
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl34
+	{mso-style-parent:style0;
+	font-weight:700;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	vertical-align:top;
+	border:1.5pt solid windowtext;}
+.xl35
+	{mso-style-parent:style0;
+	vertical-align:top;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl36
+	{mso-style-parent:style0;
+	font-weight:700;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	border:1.5pt solid windowtext;}
+.xl37
+	{mso-style-parent:style0;
+	mso-number-format:"\@";
+	border:.5pt solid windowtext;}
+.xl38
+	{mso-style-parent:style0;
+	font-family:Arial, sans-serif;
+	mso-font-charset:0;
+	border:.5pt solid windowtext;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet1</x:Name>
+    <x:WorksheetOptions>
+     <x:Print>
+      <x:ValidPrinterInfo/>
+      <x:HorizontalResolution>600</x:HorizontalResolution>
+      <x:VerticalResolution>600</x:VerticalResolution>
+     </x:Print>
+     <x:Selected/>
+     <x:TopRowVisible>37</x:TopRowVisible>
+     <x:LeftColumnVisible>3</x:LeftColumnVisible>
+     <x:Panes>
+      <x:Pane>
+       <x:Number>3</x:Number>
+       <x:ActiveRow>40</x:ActiveRow>
+       <x:ActiveCol>4</x:ActiveCol>
+       <x:RangeSelection>E41:E46</x:RangeSelection>
+      </x:Pane>
+     </x:Panes>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet2</x:Name>
+    <x:WorksheetOptions>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet3</x:Name>
+    <x:WorksheetOptions>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>11130</x:WindowHeight>
+  <x:WindowWidth>18060</x:WindowWidth>
+  <x:WindowTopX>480</x:WindowTopX>
+  <x:WindowTopY>90</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+
+<body link=blue vlink=purple>
+
+<table x:str border=0 cellpadding=0 cellspacing=0 width=1569 style='border-collapse:
+ collapse;table-layout:fixed;width:1178pt'>
+ <col class=xl25 width=135 style='mso-width-source:userset;mso-width-alt:4937;
+ width:101pt'>
+ <col width=185 style='mso-width-source:userset;mso-width-alt:6765;width:139pt'>
+ <col class=xl26 width=186 style='mso-width-source:userset;mso-width-alt:6802;
+ width:140pt'>
+ <col width=189 style='mso-width-source:userset;mso-width-alt:6912;width:142pt'>
+ <col width=169 style='mso-width-source:userset;mso-width-alt:6180;width:127pt'>
+ <col width=142 style='mso-width-source:userset;mso-width-alt:5193;width:107pt'>
+ <col width=563 style='mso-width-source:userset;mso-width-alt:20589;width:422pt'>
+ <tr class=xl24 height=52 style='mso-height-source:userset;height:39.0pt'>
+  <td height=52 class=xl32 width=135 style='height:39.0pt;width:101pt'>Function
+  Name</td>
+  <td class=xl34 width=185 style='border-left:none;width:139pt'>Description</td>
+  <td class=xl34 width=186 style='border-left:none;width:140pt'>Usage</td>
+  <td class=xl32 width=189 style='border-left:none;width:142pt'>Windchill
+  Function Name (SQLFunction constant)</td>
+  <td class=xl32 width=169 style='border-left:none;width:127pt'>Oracle Function
+  or Operator Name</td>
+  <td class=xl32 width=142 style='border-left:none;width:107pt'>SQLServer
+  Function or Operator Name</td>
+  <td class=xl36 width=563 style='border-left:none;width:422pt'>Example</td>
+ </tr>
+ <tr height=68 style='mso-height-source:userset;height:51.0pt'>
+  <td height=68 class=xl31 style='height:51.0pt'>Absolute</td>
+  <td class=xl33 width=185 style='border-left:none;width:139pt'>A mathematical
+  function that returns the absolute (positive) value of the specified numeric
+  expression.</td>
+  <td class=xl35 width=186 style='border-left:none;width:140pt'>Takes a single
+  numeric argument expression.</td>
+  <td class=xl31 style='border-left:none'>ABS</td>
+  <td class=xl31 style='border-left:none'>ABS</td>
+  <td class=xl31 style='border-left:none'>ABS</td>
+  <td class=xl31 style='border-left:none'>Absolute(-15) returns 15</td>
+ </tr>
+ <tr height=54 style='mso-height-source:userset;height:40.5pt'>
+  <td height=54 class=xl28 style='height:40.5pt;border-top:none'>Add</td>
+  <td class=xl29 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the sum of all specified numeric
+  expressions.</td>
+  <td class=xl30 width=186 style='border-top:none;width:140pt'>Takes two or
+  more numeric argument expressions.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>ADD</td>
+  <td class=xl37 style='border-top:none;border-left:none'>&quot;+&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;+&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Add(5, 3, 10) returns
+  18</td>
+ </tr>
+ <tr height=73 style='mso-height-source:userset;height:54.75pt'>
+  <td height=73 class=xl28 style='height:54.75pt;border-top:none'>Average</td>
+  <td class=xl29 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the average value of the numeric expression
+  for all rows in the results set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  numeric expression as its single argument.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>AVERAGE</td>
+  <td class=xl28 style='border-top:none;border-left:none'>AVG</td>
+  <td class=xl28 style='border-top:none;border-left:none'>AVG</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=56 style='mso-height-source:userset;height:42.0pt'>
+  <td height=56 class=xl28 style='height:42.0pt;border-top:none'>Bit And</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that performs the bit-wise AND of two numeric
+  expressions.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two numeric expressions as parameters.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>BITAND</td>
+  <td class=xl28 style='border-top:none;border-left:none'>BITAND</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;&amp;&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Bit And(5, 4) returns
+  4</td>
+ </tr>
+ <tr height=70 style='mso-height-source:userset;height:52.5pt'>
+  <td height=70 class=xl28 style='height:52.5pt;border-top:none'>Ceiling</td>
+  <td class=xl29 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the smallest integer greater than or equal
+  to the specified numeric expression<font class=font0>.</font></td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single numeric argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CEIL</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CEIL</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CEILING</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Ceiling(15.7) returns
+  16</td>
+ </tr>
+ <tr height=56 style='mso-height-source:userset;height:42.0pt'>
+  <td height=56 class=xl28 style='height:42.0pt;border-top:none'>Concatenate</td>
+  <td class=xl29 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  string function that returns the concatenation of all specified string
+  expressions.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  one or more string argument expressions.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONCAT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;||&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;+&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Concatenate('Wind',
+  'chill') returns 'Windchill'</td>
+ </tr>
+ <tr height=108 style='mso-height-source:userset;height:81.0pt'>
+  <td height=108 class=xl28 style='height:81.0pt;border-top:none'>Convert</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'
+  x:str="A function that converts expressions of one data type to another data type. ">A
+  function that converts expressions of one data type to another data type. </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a datatype as the first parameter, a general expression as the second
+  paramater, and a numeric style specification as an optional third parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONVERT</td>
+  <td class=xl38 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONVERT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Convert(varchar(1),
+  7) returns '7'</td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>Count</td>
+  <td class=xl29 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the number of all rows in the result set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a general experssion as its single argument.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>COUNT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>COUNT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>COUNT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=106 style='mso-height-source:userset;height:79.5pt'>
+  <td height=106 class=xl28 style='height:79.5pt;border-top:none'>Date
+  Difference</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  date function that returns the number of date and time boundaries crossed
+  between two specified dates.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a date type as the first parameter, a start date expression as the second
+  paramater, and an end date expression as the third parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEDIFF</td>
+  <td class=xl38 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEDIFF</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Date Difference(week,
+  Convert(datetime, '1/4/2006'), Convert(datetime, '1/11/2006')) returns 1</td>
+ </tr>
+ <tr height=119 style='height:89.25pt'>
+  <td height=119 class=xl28 style='height:89.25pt;border-top:none'>Decode</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  general function that provides an equivalent behavior to a programmatic
+  &quot;case&quot; statement.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a general expression target as the first parameter, any number of search,
+  value general expressions, and an optional default value general expression
+  as the last parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DECODE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>DECODE</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Decode (2, 1,
+  'Chicago', 2, 'New York',<span style="mso-spacerun: yes">  </span>3, 'New
+  Jersey',<span style="mso-spacerun: yes">  </span>'Non domestic') returns 'New
+  York'</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Divide</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that divides the first numeric expressions with the
+  second numeric expresion.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two numeric expressions as parameters.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DIVIDE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>&quot;/&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;/&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Divide(12, 3) returns
+  4</td>
+ </tr>
+ <tr height=72 style='mso-height-source:userset;height:54.0pt'>
+  <td height=72 class=xl28 style='height:54.0pt;border-top:none'>Floor</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns largest integer equal to or less than the
+  specified numeric expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single numeric argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>FLOOR</td>
+  <td class=xl38 style='border-top:none;border-left:none'>FLOOR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>FLOOR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Floor(15.7) returns
+  15</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Day</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the day portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_DAY</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 4</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Hours</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the hours portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_HOURS</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 10</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Minutes</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the minutes portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_MINUTES</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 20</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Month</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the month portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_MONTH</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 1</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Seconds</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the seconds portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_SECONDS</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 30</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Get Year</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the year portion of the specified Timestamp
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single timestamp argument expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GET_YEAR</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>DATEPART</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Get Day(To
+  Date('1/4/2006 10:20:30')) returns 2006</td>
+ </tr>
+ <tr height=119 style='height:89.25pt'>
+  <td height=119 class=xl28 style='height:89.25pt;border-top:none'>In String</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the starting position of the search string expression
+  in a target string expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a search string expression as the first parameter, a target string expression
+  as the second paramater, and a starting position numeric expression as the
+  third parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>IN_STRING</td>
+  <td class=xl38 style='border-top:none;border-left:none'>INSTR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CHARINDEX</td>
+  <td class=xl28 style='border-top:none;border-left:none'>In String('CORPORATE
+  FLOOR','OR', 3) returns 5</td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>Length</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the length of the target string expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LENGTH</td>
+  <td class=xl38 style='border-top:none;border-left:none'>LENGTH</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LEN</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Length('Windchill')
+  returns 9</td>
+ </tr>
+ <tr height=87 style='mso-height-source:userset;height:65.25pt'>
+  <td height=87 class=xl28 style='height:65.25pt;border-top:none'>Log</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  mathematical function returns the logarithm of the base numeric expression of
+  the specified numeric expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a base numeric expression as the first parameter and a numeric expression as
+  the second parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LOG</td>
+  <td class=xl38 style='border-top:none;border-left:none'>LOG</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Log(10, 100) returns
+  2</td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>Lower</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the lower case value of the target string expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LOWER</td>
+  <td class=xl38 style='border-top:none;border-left:none'>LOWER</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LOWER</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Lower('Windchill')
+  returns 'windchill'</td>
+ </tr>
+ <tr height=54 style='mso-height-source:userset;height:40.5pt'>
+  <td height=54 class=xl28 style='height:40.5pt;border-top:none'>Left Trim</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the target string expression after it removes leading
+  blanks.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LTRIM</td>
+  <td class=xl38 style='border-top:none;border-left:none'>LTRIM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>LTRIM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Left Trim('<span
+  style="mso-spacerun: yes">  </span>Windchill') returns 'Windchill'</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Maximum</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the maximum value of the numeric expression
+  for all rows in the results set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  numeric expression as its single argument.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MAXIMUM</td>
+  <td class=xl38 style='border-top:none;border-left:none'>MAX</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MAX</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Minimum</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the minimum value of the numeric expression
+  for all rows in the results set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  numeric expression as its single argument.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MINIMUM</td>
+  <td class=xl38 style='border-top:none;border-left:none'>MIN</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MIN</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=85 style='height:63.75pt'>
+  <td height=85 class=xl28 style='height:63.75pt;border-top:none'>Modulus</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the remainder of the second numeric
+  expression divided by the first numeric expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two numeric expressions as its arguments.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MOD</td>
+  <td class=xl38 style='border-top:none;border-left:none'>MOD</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;%&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Modulus(11,4) returns
+  3</td>
+ </tr>
+ <tr height=57 style='mso-height-source:userset;height:42.75pt'>
+  <td height=57 class=xl28 style='height:42.75pt;border-top:none'>Multiply</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the product of all specified numeric
+  expressions.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two or more numeric argument expressions.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>MULTIPLY</td>
+  <td class=xl38 style='border-top:none;border-left:none'>&quot;*&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;*&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Multiply(3, 2)
+  returns 6</td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>NLS Sort</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns a string of bytes used for locale specific sorting.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>NLSSORT</td>
+  <td class=xl38 style='border-top:none;border-left:none'>NLSSORT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=85 style='height:63.75pt'>
+  <td height=85 class=xl28 style='height:63.75pt;border-top:none'>Null Value</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'
+  x:str="This function checks the target expression and returns the default expression if it is null.  Otherwise, it returns the target expression. ">This
+  function checks the target expression and returns the default expression if
+  it is null.<span style="mso-spacerun: yes">  </span>Otherwise, it returns the
+  target expression. </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a target expression as the first parameter and a default expression of the
+  same type as the second paramater.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>NULL_VALUE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>NVL</td>
+  <td class=xl28 style='border-top:none;border-left:none'>ISNULL</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Null Value(NULL, 0)
+  returns 0</td>
+ </tr>
+ <tr height=78 style='mso-height-source:userset;height:58.5pt'>
+  <td height=78 class=xl28 style='height:58.5pt;border-top:none'>Round</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the numeric expression, rounded to the
+  specified length or precision.<br>
+  <br>
+  </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a numeric expression as the first parameter and a precision numeric
+  expression as the second paramater.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>ROUND</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ROUND</td>
+  <td class=xl28 style='border-top:none;border-left:none'>ROUND</td>
+  <td class=xl28 style='border-top:none;border-left:none'
+  x:str="Round(15.193,1) returns 15.2 ">Round(15.193,1) returns 15.2 </td>
+ </tr>
+ <tr height=56 style='mso-height-source:userset;height:42.0pt'>
+  <td height=56 class=xl28 style='height:42.0pt;border-top:none'>Right Trim</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the target string expression after it removes
+  trailing blanks.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>RTRIM</td>
+  <td class=xl38 style='border-top:none;border-left:none'>RTRIM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>RTRIM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Right
+  Trim('Windchill<span style="mso-spacerun: yes">   </span>') returns
+  'Windchill'</td>
+ </tr>
+ <tr height=71 style='mso-height-source:userset;height:53.25pt'>
+  <td height=71 class=xl28 style='height:53.25pt;border-top:none'>Sign</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the sign numeric expression (-1, 0, or 1)
+  of the specified numeric expression.<br>
+  <br>
+  </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single numeric expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SIGN</td>
+  <td class=xl38 style='border-top:none;border-left:none'>SIGN</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SIGN</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Sign(-5) returns -1</td>
+ </tr>
+ <tr height=73 style='mso-height-source:userset;height:54.75pt'>
+  <td height=73 class=xl28 style='height:54.75pt;border-top:none'>Soundex</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  string function that returns the phonetic representation string expression of
+  the specified string expression.<br>
+  <br>
+  </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SOUNDEX</td>
+  <td class=xl38 style='border-top:none;border-left:none'>SOUNDEX</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SOUNDEX</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=85 style='height:63.75pt'>
+  <td height=85 class=xl28 style='height:63.75pt;border-top:none'>Standard
+  Deviation</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the sample standard deviation of the numeric
+  expression for all rows in the results set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single numeric expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>STDDEV</td>
+  <td class=xl38 style='border-top:none;border-left:none'>STDDEV</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Subtract</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that subtracts the second numeric expression from the
+  first numeric expresion.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two numeric expressions as parameters.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SUBTRACT</td>
+  <td class=xl38 style='border-top:none;border-left:none'>&quot;-&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;-&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Subtract(10, 4)
+  returns 6</td>
+ </tr>
+ <tr height=102 style='height:76.5pt'>
+  <td height=102 class=xl28 style='height:76.5pt;border-top:none'>Sub String</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the portion of string expression specified by the
+  start and length numeric expressions.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a string expression as the first parameter, a start numeric expression as the
+  second paramater, and a length numeric expression as the third parameter.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SUB_STRING</td>
+  <td class=xl38 style='border-top:none;border-left:none'>SUBSTR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SUBSTRING</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Sub
+  String('Windchill', 3, 2) returns 'nd'</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>Sum</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>An
+  aggregate function that returns the summation of the numeric expression for
+  all rows in the results set.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single numeric expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SUM</td>
+  <td class=xl38 style='border-top:none;border-left:none'>SUM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SUM</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=89 style='mso-height-source:userset;height:66.75pt'>
+  <td height=89 class=xl28 style='height:66.75pt;border-top:none'>System Date</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'
+  x:str="This timestamp function returns the current date and time set for the operating system on which the database resides. ">This
+  timestamp function returns the current date and time set for the operating
+  system on which the database resides. </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  no arguments.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>SYSDATE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>SYSDATE</td>
+  <td class=xl28 style='border-top:none;border-left:none'>GETDATE</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=92 style='mso-height-source:userset;height:69.0pt'>
+  <td height=92 class=xl28 style='height:69.0pt;border-top:none'>Time
+  Difference(days)</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'
+  x:str="This timestamp function returns the difference in days between the first timestamp expression and the second timestamp expression. ">This
+  timestamp function returns the difference in days between the first timestamp
+  expression and the second timestamp expression. </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two timestamp expressions as parameters.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TIME_DIFFERENCE_IN_DAY</td>
+  <td class=xl38 style='border-top:none;border-left:none'>&quot;-&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;/&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Time
+  Difference(days)(To Date('1/4/2006 10:00:00'), To Date('1/2/2006 10:00:00'))
+  returns 2</td>
+ </tr>
+ <tr height=85 style='height:63.75pt'>
+  <td height=85 class=xl28 style='height:63.75pt;border-top:none'>Time
+  Difference(hours)</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'
+  x:str="This timestamp function returns the difference in days between the first timestamp expression and the second timestamp expression. ">This
+  timestamp function returns the difference in days between the first timestamp
+  expression and the second timestamp expression. </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  two timestamp expressions as parameters.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TIME_DIFFERENCE_IN_HOUR</td>
+  <td class=xl38 style='border-top:none;border-left:none'>&quot;-&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&quot;/&quot;</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Time
+  Difference(days)(To Date('1/4/2006 10:00:00'), To Date('1/2/2006 10:00:00'))
+  returns 48</td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>To Character</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the string expression for the specified
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_CHAR</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONVERT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>To Character(12)
+  returns '12'</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>To Date</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the timestamp expression for the specified
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TO_DATE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_DATE</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONVERT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>&nbsp;</td>
+ </tr>
+ <tr height=68 style='height:51.0pt'>
+  <td height=68 class=xl28 style='height:51.0pt;border-top:none'>To Number</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  conversion function returns the numeric expression for the specified
+  expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TO_NUMBER</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TO_NUMBER</td>
+  <td class=xl28 style='border-top:none;border-left:none'>CONVERT</td>
+  <td class=xl28 style='border-top:none;border-left:none'>To Number('12')
+  returns 12</td>
+ </tr>
+ <tr height=90 style='mso-height-source:userset;height:67.5pt'>
+  <td height=90 class=xl28 style='height:67.5pt;border-top:none'>Truncate</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>A
+  mathematical function that returns the numeric expression, tuncated to the
+  specified number of decimal places.<br>
+  <br>
+  </td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a numeric expression as the first parameter and a precision numeric
+  expression as the second paramater.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>TRUNCATE</td>
+  <td class=xl38 style='border-top:none;border-left:none'>TRUNC</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Not Supported</td>
+  <td class=xl28 style='border-top:none;border-left:none'
+  x:str="Truncate(15.79,1) returns 15.7 ">Truncate(15.79,1) returns 15.7 </td>
+ </tr>
+ <tr height=51 style='height:38.25pt'>
+  <td height=51 class=xl28 style='height:38.25pt;border-top:none'>Upper</td>
+  <td class=xl27 width=185 style='border-top:none;border-left:none;width:139pt'>This
+  string function returns the upper case value of the target string expression.</td>
+  <td class=xl27 width=186 style='border-top:none;border-left:none;width:140pt'>Takes
+  a single string expression.</td>
+  <td class=xl28 style='border-top:none;border-left:none'>UPPER</td>
+  <td class=xl38 style='border-top:none;border-left:none'>UPPER</td>
+  <td class=xl28 style='border-top:none;border-left:none'>UPPER</td>
+  <td class=xl28 style='border-top:none;border-left:none'>Upper('Windchill')
+  returns 'WINDCHILL'</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=135 style='width:101pt'></td>
+  <td width=185 style='width:139pt'></td>
+  <td width=186 style='width:140pt'></td>
+  <td width=189 style='width:142pt'></td>
+  <td width=169 style='width:127pt'></td>
+  <td width=142 style='width:107pt'></td>
+  <td width=563 style='width:422pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

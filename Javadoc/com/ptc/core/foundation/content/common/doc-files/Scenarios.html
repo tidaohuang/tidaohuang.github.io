@@ -1,0 +1,190 @@
+<HTML>
+	<HEAD>
+		<TITLE>Content Management Scenarios</TITLE>
+		<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../../stylesheet.css" TITLE="Style"/>
+	</HEAD>
+	<BODY BGCOLOR="white">
+		
+		<H1>Content Management Scenarios</H1>
+		<P>
+			This document describes how the code in <A HREF="../../server/package-summary.html">com.ptc.core.foundation.content.server</A> and <A HREF="../package-summary.html">com.ptc.core.foundation.content.common</A> may be used for various content-management scenarios.  Each scenario will be described, and a sequential description of steps or an actual code fragment will be provided.
+		</P>		
+		<UL>
+			<LI><A HREF="#1">1.1 Uploading and Attaching a File to a ContentHolder</A>
+				<UL>
+					<LI><A HREF="#1.1">1.1 Uploading a File to be attached to a ContentHolder</A></LI>
+					<LI><A HREF="#1.2">1.2 Adding a New ContentItem to a ContentHolder</A></LI>
+				</UL>
+			</LI>
+			<LI><A HREF="#2">2. Removing a ContentItem from a ContentHolder</A></LI>
+			<LI><A HREF="#3">3. Getting the ContentItems associated with a ContentHolder</A></LI>
+			<LI><A HREF="#4">4. Getting the Secondary ContentItems associated with a ContentHolder</A></LI>
+			<LI><A HREF="#5">5. Replacing the file data for an ApplicationData ContentItem</A></LI>
+			<LI><A HREF="#6">6. Creating and Adding URLData to a ContentHolder</A></LI>
+			<LI><A HREF="#7">7. Updating URLData on a ContentHolder</A></LI>
+			<LI><A HREF="#8">8. Downloading file data for an ApplicationData instance</A></LI>
+		</UL>
+
+		<A NAME="1"><H2>1. Uploading and Attaching a File to a ContentHolder</H2></A>
+		<P>
+			To attach a file to a ContentHolder as an ApplicationData content item, you must first upload it to a staging area, then in a subsequent step, attach it to the holder.  The next scenario shows how to upload the file content.  The second scenario, shows how to add the ContentItem to the holder.
+		</P>
+
+		<A NAME="1.1"><H3>1.1. Uploading a File to be attached to a ContentHolder</H3></A>
+		<P>
+			Upload file content to the staging area.  
+		</P>
+		<OL>
+			<B>On the client</B>
+			<LI>Open the file using an <A HREF="../OpenFileForReadCommand.html">OpenFileForReadCommand</A></LI>
+			<LI>Open a post stream to the server - DETAILS ARE IGNORED FOR NOW</LI>
+			<LI>Transfer the data between the file stream and the post stream with a <A HREF="../TransferStreamDataCommand.html">TransferStreamDataCommand</A></LI>
+			<B>On the server</B>
+			<LI>Send the data received from the client posts to the staging area using a <A HREF="../../server/StageContentFromInputStreamCommand.html">StageContentFromInputStreamCommand</A></LI>
+			<LI>Return the ApplicationData content item produced as result data by the StageContentFromInputStreamCommand to the client</LI>
+		</OL>
+		<P>
+			The ApplicationData TypeInstance that is obtained from the <A HREF="../../server/StageContentCommand.html">StageContentCommand</A> will contain the file name, the uploaded from path, the size of the file, and a checksum.  It will also contain a URI that can be used to locate the file data in the staging area later, when the ApplicationData is attached to the ContentHolder.  The caller, however, does not need to worry about the URI value.  This ApplicationData should be attached to the ContentHolder as in the next scenario...
+		</P>
+
+		<!-- NEW SCENARIO -->
+		<A NAME="1.2"><H3>1.2. Adding a New ContentItem to a ContentHolder</H3></A>
+		<P>
+			Given a ContentHolder that is persisted, add a new ContentItem to the holder.
+		</P>
+		<OL>
+			<LI>Pick the ContentItem's role type and set it as a model-based attribute on the ContentItem itself.</LI>
+			<LI>The ContentItem must be added as an attribute value in the ContentHolder container.  The AttributeTypeIdentifier for this attribute is a NonPersistedAttributeTypeIdentifier obtained from the method <code>ContentConstants.contentHolderModContentItemAti(...)</code>.</LI>
+			<LI>Then the ContentHolder must be updated using an UpdatePersistentEntityCommand</LI>
+		</OL>
+		<PRE>      TypeInstance content_holder = ...;
+      TypeInstance app_data = ...; // assumed to be an ApplicationData
+&nbsp;
+      // make the content item a secondary content item
+      CommandUtility.putAttributeContent(ContentConstants.CONTENT_ITEM_ROLE_NAME_ATI,
+            app_data, "SECONDARY");
+&nbsp;
+      // Add the content item as a new attribute value
+      ContentUtil.markContentItemAsNew(content_holder, app_data);
+&nbsp;
+      // Update the holder that bears the ContentItem
+      UpdatePersistentEntityCommand update_command = new UpdatePersistentEntityCommand();
+      update_command.setSource(content_holder);
+      ...; // set other inputs
+&nbsp;
+      // execute the update - performs the add
+      update_command = (UpdatePersistentEntityCommand)update_command.execute();</PRE>
+
+
+
+
+		<!-- NEW SCENARIO -->
+		<A NAME="2"><H2>2. Removing a ContentItem from a ContentHolder</H2></A>
+		<P>
+			Given a ContentHolder and a ContentItem on that holder, remove the ContentItem.
+		</P>
+		<OL>
+			<LI>The ContentItem must first be marked as a removed attribute in the ContentHolder container.  This is done by adding it to ensure it is in the type instance's attribute container, then immediately removing the value using its AttribyteIdentifier to make the value get marked as deleted.  The AttributeTypeIdentifier for this attribute is a NonPersistedAttributeTypeIdentifier obtained from the method <code>ContentConstants.contentHolderModContentItemAti(...)</code>.</LI>
+			<LI>Then the ContentHolder must be updated using an UpdatePersistentEntityCommand</LI>
+		</OL>
+		<PRE>      TypeInstance content_holder = ...;
+      TypeInstance app_data = ...;
+&nbsp;
+      // Mark the content item as a removed attribute value.
+      // The utility method vastly simplifies this task.	
+      ContentUtil.markContentItemAsDeleted(content_holder, content_item);
+&nbsp;
+      // Update the holder that bears the ContentItem
+      UpdatePersistentEntityCommand update_command = new UpdatePersistentEntityCommand();
+      update_command.setSource(content_holder);
+      ...; // set other inputs
+&nbsp;
+      // execute the update - performs the delete
+      update_command = (UpdatePersistentEntityCommand)update_command.execute();</PRE>
+
+
+		<!-- NEW SCENARIO -->
+		<A NAME="3"><H2>3. Getting the ContentItems associated with a ContentHolder</H2></A>
+		<P>
+			Given a ContentHolder as a TypeInstance obtain the set of ContentItems associated with it.
+		</P>
+		<UL>
+			<LI>Use the <A HREF="../GetContentItemsCommand.html">GetContentItemsCommand</A> command.  Code is provided in the class documentation demonstrating this scenario.</LI>
+		</UL>
+
+
+		<!-- NEW SCENARIO -->
+		<A NAME="4"><H2>4. Getting the Secondary ContentItems associated with a ContentHolder</H2></A>
+		<P>
+			Given a ContentHolder as a TypeInstance obtain just the set of secondary ContentItems associated with it.  This scenario is nearly identical to the previous, the difference in code is emphasized.
+		</P>
+		<PRE>      TypeInstance content_holder = ...;
+      GetContentItemsCommand get_cmd = new GetContentItemsCommand();
+      get_cmd.setContentHolder(content_holder);
+      <EM>get_cmd.setRole(ContentRoleType.SECONDARY.toString()); // use the simple internal value</EM>
+      get_cmd = (GetContentItemsCommand)get_cmd.execute();
+&nbsp;
+      // get the updated content holder
+      content_holder = get_cmd.getContentHolder();
+&nbsp;
+      // get the content items
+      TypeInstance[] content_items = get_cmd.getContentItems();
+      ... // do something with them</PRE>
+
+
+		<!-- NEW SCENARIO -->
+		<A NAME="5"><H2>5. Replacing the file data for an ApplicationData ContentItem</H2></A>
+		<P>
+			<I>full documentation forthcoming</I>
+		</P>
+		<PRE>      TypeInstance content_holder = ...;
+      TypeInstance old_app_data = ...; // the item to replace
+&nbsp;
+      // Stage the content for the new item - the result is
+      // the new ApplicationData instance.
+      StageContentCommand stage_command = ...;
+      stage_command = (StageContentCommand)stage_command.execute();
+      TypeInstance new_app_data = stage_comand.getApplicationData();
+&nbsp;
+      // Make the new content item a secondary content item (or whatever
+      // other role type you'd like)
+      CommandUtility.putAttributeContent(
+            ContentConstants.CONTENT_ITEM_ROLE_NAME_ATI,
+            new_app_data, "SECONDARY");
+&nbsp;
+      // Mark the old content item as a deleted attribute value.
+      // The utility method vastly simplifies this task.	
+      ContentUtil.markContentItemAsDeleted(content_holder, old_app_data);
+
+      // Mark the new content item as a mew attribute value.
+      // The utility method vastly simplifies this task.	
+      ContentUtil.markContentItemAsNew(content_holder, new_app_data);
+&nbsp;
+      // Update the holder that bears the ContentItems
+      UpdatePersistentEntityCommand update_command = new UpdatePersistentEntityCommand();
+      update_command.setSource(content_holder);
+      ...; // set other inputs
+&nbsp;
+      // execute the update - performs the delete and add
+      update_command = (UpdatePersistentEntityCommand)update_command.execute();</PRE>
+
+		<!-- NEW SCENARIO -->
+		<A NAME="6"><H2>6. Creating and Adding URLData to a ContentHolder</H2></A>
+		<P>
+			<I>documentation forthcoming</I>
+		</P>
+
+		<!-- NEW SCENARIO -->
+		<A NAME="7"><H2>7. Updating URLData on a ContentHolder</H2></A>
+		<P>
+			<I>documentation forthcoming</I>
+		</P>
+
+		<!-- NEW SCENARIO -->
+		<A NAME="8"><H2>8. Downloading file data for an ApplicationData instance</H2></A>
+		<P>
+			<I>documentation forthcoming</I>
+		</P>
+
+	</BODY>
+</HTML>

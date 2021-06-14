@@ -1,0 +1,80 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="Template" content="C:\Program Files\Microsoft Office\Office\html.dot">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (WinNT; U) [Netscape]">
+</head>
+<body link="#0000FF" vlink="#800080">
+<b><font size=+1>TypeModel Command Beans</font></b>
+<p><font size=-1>The TypeModel command beans reside in com.ptc.core.command.common.bean.typemodel
+and are used for client access to the methods on the com.ptc.core.meta.type.runtime.server.TypeModel
+interface.</font>
+<p><b><font size=+1>API</font></b>
+<p><b><font size=-1>The available command beans are</font></b>
+<p><img SRC="doc-files/Image7.gif" height=667 width=768>
+<p><b>Specific functionality for each bean is available in the javadoc
+for the com.ptc.core.command.common.bean.typemodel package. Each command
+performs the function of a single method on the TypeModel interface. There
+are four typemodel commands whose names don't exactly match there method
+names on the TypeModel interface, those are:</b>
+<p><b>GetFilteredDescendantsCommand - corresponds to </b><font size=-1><font face="Courier New">getDescendants(type_id
+: TypeIdentifier, interface_type_id : TypeIdentifier) : TypeIdentifier[]</font>
+on the TypeModel.</font>
+<p><font size=-1>GetFilteredInstantiableDescendantsCommand - corresponds
+to <font face="Courier New">getInstantiableDescendants(type_id : TypeIdentifier,
+interface_type_id : TypeIdentifier) : TypeIdentifier[]</font></font>
+<p><font size=-1>GetFilteredChildrenCommand - corresponds to <font face="Courier New">getChildren(type_id
+: TypeIdentifier, interface_type_id : TypeIdentifier) : TypeIdentifier[]</font></font>
+<p><font size=-1>GetFilteredInstantiableChildrenCommand - corresponds to
+<font face="Courier New">getInstantiableChildren(type_id : TypeIdentifier,
+interface_type_id : TypeIdentifier) : TypeIdentifier[]</font></font>
+<p><font size=-1>For each of the above apis the interface_type_id represents
+the "filter". For example, the GetFilteredDescendantsCommand will return
+an array of TypeIdentifiers containing all the types that are descendants
+of both the type_id and the interface_type_id.</font>
+<p><img SRC="doc-files/Image8.gif" height=664 width=842><b><font size=-1>The typemodel
+command</font></b>
+<br><b><font size=-1>delegates forward calls to the server side TypeModel
+interface. There is 1 typemodel command delegate for each typemodel command
+bean</font></b>
+<br>&nbsp;
+<p><font size=+1>When to Use</font>
+<p><font size=-1>The typemodel command beans should be used by clients
+existing in common or client that want access to methods on the TypeModel
+interface.</font>
+<p><b><font size=+1>How to Use</font></b>
+<p><font size=-1>To use the typemodel command beans you need to</font>
+<ol>
+<li>
+<font size=-1>Instantiate a command bean.</font></li>
+
+<li>
+<font size=-1>Set the input arguments on the command bean.</font></li>
+
+<li>
+<font size=-1>Call the <font face="Courier New">execute( Command cmd )</font>
+method for the returned command delegate. The execute call sets the result
+of the command delegate to the command bean.</font></li>
+
+<li>
+<font size=-1>Get the result from the command bean.</font></li>
+</ol>
+<font size=-1>The following code illustrates this process for a call to
+<font face="Courier New">getDescendants(type_id : TypeIdentifier) : TypeIdentifier[]
+</font>on the TypeModel.</font>
+<p><font face="Courier New,Courier">try {</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; GetDescendantsCommand
+gdc = new GetDescendantsCommand();</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; gdc.setType_id(ti);</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; gdc = (GetDescendantsCommand)gdc.execute();</font>
+<br><font face="Courier New,Courier">}</font>
+<br><font face="Courier New,Courier">catch&nbsp; (CommandException ce )
+{ce.printStackTrace();}</font>
+<br><font face="Courier New,Courier">catch (WTPropertyVetoException wtve)
+{wtve.printStackTrace();}</font>
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

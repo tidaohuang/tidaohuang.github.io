@@ -1,0 +1,185 @@
+<html>
+
+<head>
+<title>QueryBuilder Documentation Configuration</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+
+<body>
+<h1>Configuration File Directory</h1>
+<p>
+All configuration files are accessed at runtime in a single directory specified
+by the property, <code>com.ptc.windchill.enterprise.queryBuilder.documenationDirectoryPath</code>.
+The default directory path is <code>$(wt.home)/conf/reportTemplate</code>.  Each
+file in this directory that has a name ending with ".qbDoc.xml" will be considered an
+XML configuration file.
+</p>
+<p>
+Configuration files can be customized.  The customized configuration file will only need to be added
+to the configuration file directory.  It is recommended to use standard "safe area" for managing
+customized files.  See the "Managing Customizations" section of the Windchill Customizer's Guide for
+more information.
+</p>
+<h1>Configuration File XML Schema</h1>
+<p>
+A Query Builder documentation XML configuration file uses the following schema.
+</p>
+<BR>
+<code>
+&lt;!ELEMENT documentation ((description?,documentationUrl?,entry+)+)&gt;
+<BR>
+<BR>
+&lt;!ATTLIST entry locale CDATA #IMPLIED&gt;
+<BR>
+&lt;!ELEMENT entry (description?,documentationUrl?)&gt;
+<BR>
+&lt;!ATTLIST entry className CDATA #REQUIRED&gt;
+<BR>
+&lt;!ATTLIST entry locale CDATA #IMPLIED&gt;
+<BR>
+&lt;!ATTLIST entry prefix (true|false) false&gt;
+<BR>
+<BR>
+&lt;!ELEMENT description (#PCDATA?)&gt;
+<BR>
+&lt;!ATTLIST description resourceBundle CDATA #IMPLIED&gt;
+<BR>
+&lt;!ATTLIST description resourceKey CDATA #IMPLIED&gt;
+<BR>
+&lt;!ATTLIST description useJavadoc (true|false) false&gt;
+<BR>
+<BR>
+&lt;!ELEMENT documentationUrl (#PCDATA?)&gt;
+<BR>
+&lt;!ATTLIST documentationUrl codebaseRelative (true|false) false&gt;
+<BR>
+&lt;!ATTLIST documentationUrl javadocRelative (true|false) false&gt;
+<BR>
+&lt;!ATTLIST documentationUrl useJavadoc (true|false) false&gt;
+</code>
+<p>
+The configuration file has entry elements that specify documentation for a class or group of classes within a locale.
+The <code>entry</code> element <code>className</code> attribute can specify a single class or a group of classes
+that start with the <code>className</code> value if the <code>prefix</code> attribute is true.  If the <code>locale</code>
+attribute is specified, then the entry specifies localized documentation and will be used when the user's locale matches
+the <code>locale</code> value.  The single top level <code>documentation</code> element can specify a default 
+<code>locale</code> attribute.  This default locale will apply to all entries unless it is overriden in the 
+<code>entry</code> element.  If no locale is specified in both the <code>entry</code> and <code>documentation</code> 
+elements, then this is a base entry which will be used when there is no match for the user's locale. 
+</p>
+<p>
+Each entry can specify a description and documentation URL.   The <code>description</code> element can contain text.  If
+it does not contain text, then it can specify external sources.  If the <code>useJavadoc</code> attribute is true, then
+the description text will be parsed from the Javadoc for the class.  If the <code>resourceBundle</code> attribute is
+specified, then that resource bundle will be used to look up the text decripttion.  If a resource bundle is used, then
+the resource key will be the <code>className</code> value unless <code>resourceKey</code> is specified.  The
+<code>documentationUrl</code> element can contain a text URL.  If the <code>javadocRelative</code> attribute is true,
+then the URL text is assumed to be relative URL to the javadoc base.  If the <code>codebaseRelative</code> attribute is true,
+then the URL text is assumed to be relative URL to the codebase.  If the <code>useJavadoc</code> attribute is true, then
+the documenation URL will be built referencing the Javadoc for the class.
+</p>
+<p>
+The <code>description</code> and <code>documentationUrl</code> elements can also appear as siblings to the <code>entry</code> 
+elements.  When used this way, the <code>description</code> and <code>documentationUrl</code> elements are used as default
+values that apply to all subsequent sibling <code>entry</code> elements.  For example, a <code>description</code> element 
+could contain a <code>useJavadoc</code> attribute with a true value.  This would indicate that all subsequent entries should
+have description text parsed from Javadoc.  If any of the <code>entry</code> elements had a child <code>description</code> 
+element, then the child's values would override the default.
+</p>
+
+<h1>Javadoc Comments</h1>
+<p>
+The Query Builder documentation can also be specified directly in the Javadoc comments.  This is done via directives embedded
+within HTML comments in the javadoc.  The following directives are supported.
+</p>
+<code>
+&lt;!-- QBDOC.description --&gt;
+</code>
+<BR>
+This directive specifies that the description text will be parsed from the Javadoc for the class.   The first paragraph of the
+class Javadoc will be used as the description.
+<BR>
+<BR>
+<code>
+&lt;!-- QBDOC.descriptionBegin --&gt;
+</code>
+<BR>
+<code>
+&lt;!-- QBDOC.descriptionEnd --&gt;
+</code>
+<BR>
+This pair of directives must be used together.  The description will contain the text between these two comments.
+<BR>
+<BR>
+<code>
+&lt;!-- QBDOC.documentationUrl </code><i>relative URL</i><code> --&gt;
+</code>
+<BR>
+This directive specifies the documentation URL will be generated relative to the javadoc base.  If <i>relative URL</i> is not specified,
+then the URL will refrence the class javadoc.
+
+<h1>Best Practices</h1>
+<p>
+The following are recommended best practices for providing Query Builder documentation.   If the class is relevant to a report query, then 
+a Query Builder documentation entry should be added.  In general, classes are relevant to report queries if any of the following statments
+apply.
+<ul>
+<li>The class is marked as a Supported API.</li>
+<li>The class directly correlates to some concept in the User Interface.  For example, a table in the User Interface contains data from
+the attributes of a class or an association link class is navigated to provide related information.</li>
+<li>The class is a supporting class needed for queries that populate data shown in the User Interface.</li>
+<li>Customers have mades inquiries about the class related to building Query Builder queries.   The customer requests may have been made 
+indirectly via Global Services, Product Owners, or Technical Support.</li>
+</ul>
+</p>
+<p>
+If a class requires Query Builder documentation and it is not currently a Supported API, then consider whether this class should be 
+made a Supported API.  If the Supported API is true, then the class Javadoc will be available at runtime and can be made available
+to Query Builder users.   Also, determine if the existing Javadoc class and attribute information is sufficient.  Some comments may need 
+to be added that provide information specific to queries.  It is recommended that required documentation should be 
+added to Javadoc. 
+</p>
+<h2>Description</h2>
+<p>
+The description can be derived from the first paragraph of the class Javadoc description (assuming that Supported API is true so that the
+Javadoc is available at runtime).   If the existing Javadoc has basic information on the purpose of the class, then an entry can be used 
+that will derive the description from Javadoc automatically.  The <code>description</code> element <code>useJavadoc</code> attribute can
+be used for this.   If the Javadoc class description that is most appropriate for Query Builder is not the first paragraph, then use
+the <code>QBDOC.descriptionBegin</code> and <code>QBDOC.description</code> Javadoc comments to delimit the portion of text that should 
+be used as the description.  If adding or using the Javadoc description is not possible or appropriate, then the description can be added as text.  
+The recommended practice for this is to add a description to a resource bundle and use the <code>description</code> element 
+<code>resourceBundle</code> attribute.
+</p>
+<h2>Documentation URL</h2>
+<p>
+This information should reference attributes on the class along with short descriptions of their meaning or purpose.   It should also 
+include information on how this class is associated to other classes.   Determine if the full Javadoc for the class meets these needs.   
+Other existing sources for this information may include package Javadoc, Windchill documentation or other external documentation  
+(e.g. Tech Support articles).  If new documentation is added, the recommended practice is to add the document to a "doc-files" directory in 
+a related package directory.  The document can then be referenced using the <code>docuentationUrl</code> element with 
+<code>javadocRelative</code> attribute equal to <code>true</code>.   If a high level document is added, it is also a good practice to 
+add references to individual class Javadoc which has more class specific details.
+</p>
+
+<h1>Examples</h1>
+<dl>
+
+<dt><a href="Reporting.qbDoc.html">Reporting</a></dt>
+<dd>This references documentation that has been added to a "doc-files" directory.  It contains an image that shows the associations between
+the key classes in the Reporting model.
+</dd>
+<dt><a href="https://support.ptc.com/appserver/cs/view/solution.jsp?n=CS63595">Change</a></dt>
+<dd>This refernces a Technical Support article that is available to customers.  The document was written to satisfy requests for information that
+could be used to build report queries. 
+</dd>
+
+<dt><a href="../../../../index.html?wt/part/WTPart.html">WTPart</a></dt>
+<dd>This references the class Javadoc directly.  This can be specified by using the <code>documentationUrl</code> element <code>useJavadoc</code> 
+attribute.
+</dd>
+
+</dl>
+
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_A373AD1hEeGEGrr-Q_Rh3g" name="Model">
+  <packageImport xmi:id="_A373AT1hEeGEGrr-Q_Rh3g">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_rlSAUEFTEeG_VZnD_WivKw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_DKPQ0D1hEeGEGrr-Q_Rh3g" name="AdHocControlled">
+    <generalization xmi:id="_lx_vAD1hEeGEGrr-Q_Rh3g" general="_EM_uUD1hEeGEGrr-Q_Rh3g"/>
+    <generalization xmi:id="_mhwYAD1hEeGEGrr-Q_Rh3g" general="_GFKw4D1hEeGEGrr-Q_Rh3g"/>
+    <generalization xmi:id="_m7wzcD1hEeGEGrr-Q_Rh3g" general="_IBc3YD1hEeGEGrr-Q_Rh3g"/>
+    <ownedAttribute xmi:id="_p-F8AD1hEeGEGrr-Q_Rh3g" name="entrySet" visibility="public" type="_igsWUD1hEeGEGrr-Q_Rh3g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_EM_uUD1hEeGEGrr-Q_Rh3g" name="AccessControlled"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_GFKw4D1hEeGEGrr-Q_Rh3g" name="AccessControlList"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_IBc3YD1hEeGEGrr-Q_Rh3g" name="AdministrativelyLockable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_igsWUD1hEeGEGrr-Q_Rh3g" name="AclEntrySet"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_w5ZPUD1jEeGEGrr-Q_Rh3g" name="AccessControlled"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_x4Vj0D1jEeGEGrr-Q_Rh3g" name="DomainAdministered"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_yz_60D1jEeGEGrr-Q_Rh3g" name="AdministrativelyLockable"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_z4gr0D1jEeGEGrr-Q_Rh3g" name="PolicyAccessControlled" clientDependency="_7PKT0D1kEeGEGrr-Q_Rh3g">
+    <generalization xmi:id="_GbPnMD1kEeGEGrr-Q_Rh3g" general="_w5ZPUD1jEeGEGrr-Q_Rh3g"/>
+    <generalization xmi:id="_G0z9wD1kEeGEGrr-Q_Rh3g" general="_x4Vj0D1jEeGEGrr-Q_Rh3g"/>
+    <generalization xmi:id="_HPRsMD1kEeGEGrr-Q_Rh3g" general="_yz_60D1jEeGEGrr-Q_Rh3g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_4CyT4D1jEeGEGrr-Q_Rh3g" name="AccessControlList"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_R8SBcD1kEeGEGrr-Q_Rh3g" name="AccessSelector">
+    <ownedAttribute xmi:id="_MwXrUD1mEeGEGrr-Q_Rh3g" name="typeId" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_NJ6zwD1mEeGEGrr-Q_Rh3g" name="stateName" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_NjYcoD1mEeGEGrr-Q_Rh3g" name="ownerRef" visibility="public" type="_W0yWkD1mEeGEGrr-Q_Rh3g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gmkroD1kEeGEGrr-Q_Rh3g" name="AccessPolicyRule">
+    <generalization xmi:id="_9XkKwD1kEeGEGrr-Q_Rh3g" general="_4CyT4D1jEeGEGrr-Q_Rh3g"/>
+    <ownedAttribute xmi:id="_cgB3kD1lEeGEGrr-Q_Rh3g" name="entrySet" visibility="protected" type="_igsWUD1hEeGEGrr-Q_Rh3g"/>
+    <ownedAttribute xmi:id="_u4vUQD1lEeGEGrr-Q_Rh3g" name="selector" type="_R8SBcD1kEeGEGrr-Q_Rh3g" aggregation="composite" association="_u4wiYD1lEeGEGrr-Q_Rh3g">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u4vUQT1lEeGEGrr-Q_Rh3g" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u4vUQj1lEeGEGrr-Q_Rh3g" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hkJHID1kEeGEGrr-Q_Rh3g" name="PolicyAcl">
+    <ownedAttribute xmi:id="_kN5-sD1kEeGEGrr-Q_Rh3g" name="entrySet" visibility="public" type="_igsWUD1hEeGEGrr-Q_Rh3g"/>
+    <ownedAttribute xmi:id="_taaVED1lEeGEGrr-Q_Rh3g" name="selector" type="_R8SBcD1kEeGEGrr-Q_Rh3g" aggregation="composite" association="_tacKQD1lEeGEGrr-Q_Rh3g">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_taaVET1lEeGEGrr-Q_Rh3g" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_taaVEj1lEeGEGrr-Q_Rh3g" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_7PKT0D1kEeGEGrr-Q_Rh3g" name="ruled by" supplier="_hkJHID1kEeGEGrr-Q_Rh3g" client="_z4gr0D1jEeGEGrr-Q_Rh3g"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_tacKQD1lEeGEGrr-Q_Rh3g" name="" memberEnd="_tacKQT1lEeGEGrr-Q_Rh3g _taaVED1lEeGEGrr-Q_Rh3g">
+    <ownedEnd xmi:id="_tacKQT1lEeGEGrr-Q_Rh3g" name="" type="_hkJHID1kEeGEGrr-Q_Rh3g" association="_tacKQD1lEeGEGrr-Q_Rh3g">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tacKQj1lEeGEGrr-Q_Rh3g" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tacKQz1lEeGEGrr-Q_Rh3g" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_u4wiYD1lEeGEGrr-Q_Rh3g" name="" memberEnd="_u4wiYT1lEeGEGrr-Q_Rh3g _u4vUQD1lEeGEGrr-Q_Rh3g">
+    <ownedEnd xmi:id="_u4wiYT1lEeGEGrr-Q_Rh3g" name="" type="_gmkroD1kEeGEGrr-Q_Rh3g" association="_u4wiYD1lEeGEGrr-Q_Rh3g">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u4wiYj1lEeGEGrr-Q_Rh3g" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u4wiYz1lEeGEGrr-Q_Rh3g" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_W0yWkD1mEeGEGrr-Q_Rh3g" name="ObjectReference"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_J4Ap4EFSEeG_VZnD_WivKw" name="Persistable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LpOv4EFSEeG_VZnD_WivKw" name="WTAclEntry">
+    <generalization xmi:id="_W0r7sEFSEeG_VZnD_WivKw" general="_J4Ap4EFSEeG_VZnD_WivKw"/>
+    <ownedAttribute xmi:id="_-TF_wEFSEeG_VZnD_WivKw" name="owner" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_--gUQEFSEeG_VZnD_WivKw" name="allExceptPrincipal" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_VumA4EFTEeG_VZnD_WivKw" name=""/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="__RzqwEFSEeG_VZnD_WivKw" name="principalReference" visibility="public" type="_4UrEEEFTEeG_VZnD_WivKw"/>
+    <ownedAttribute xmi:id="__mVJQEFSEeG_VZnD_WivKw" name="permissionMask" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_9k_uMEFTEeG_VZnD_WivKw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="__5euwEFSEeG_VZnD_WivKw" name="permissionType" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Bj0UMEFUEeG_VZnD_WivKw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ANLG0EFTEeG_VZnD_WivKw" name="GRANT" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_GrkRIEFUEeG_VZnD_WivKw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_AgjV0EFTEeG_VZnD_WivKw" name="DENY" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_KFA5MEFUEeG_VZnD_WivKw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_A0xSUEFTEeG_VZnD_WivKw" name="ABSOLUTE_DENY" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_L52T4EFUEeG_VZnD_WivKw" value="2"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Mw4UcEFSEeG_VZnD_WivKw" name="AccessControlList">
+    <generalization xmi:id="_WEFlMEFSEeG_VZnD_WivKw" general="_J4Ap4EFSEeG_VZnD_WivKw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YlwQsEFSEeG_VZnD_WivKw" name="AclEntryLink" memberEnd="_YlwQtEFSEeG_VZnD_WivKw _YlwQsUFSEeG_VZnD_WivKw">
+    <ownedEnd xmi:id="_YlwQsUFSEeG_VZnD_WivKw" name="entry" type="_LpOv4EFSEeG_VZnD_WivKw" association="_YlwQsEFSEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YlwQskFSEeG_VZnD_WivKw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YlwQs0FSEeG_VZnD_WivKw"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_YlwQtEFSEeG_VZnD_WivKw" name="acl" type="_Mw4UcEFSEeG_VZnD_WivKw" association="_YlwQsEFSEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YlwQtUFSEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YlwQtkFSEeG_VZnD_WivKw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_4UrEEEFTEeG_VZnD_WivKw" name="WTPrincipalReference"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_IED4oEFVEeG_VZnD_WivKw" name="AccessControlled"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_JIpiIEFVEeG_VZnD_WivKw" name="ObjectMappable"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_KJ0EMEFVEeG_VZnD_WivKw" name="SecurityLabeled">
+    <generalization xmi:id="_Uau6YEFVEeG_VZnD_WivKw" general="_IED4oEFVEeG_VZnD_WivKw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LheasEFVEeG_VZnD_WivKw" name="SecurityLabels">
+    <generalization xmi:id="_VBk38EFVEeG_VZnD_WivKw" general="_JIpiIEFVEeG_VZnD_WivKw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_V2BzsEFVEeG_VZnD_WivKw" name="" memberEnd="_V2CawEFVEeG_VZnD_WivKw _V2BzsUFVEeG_VZnD_WivKw" navigableOwnedEnd="_V2BzsUFVEeG_VZnD_WivKw">
+    <ownedEnd xmi:id="_V2BzsUFVEeG_VZnD_WivKw" name="securityLabels" type="_LheasEFVEeG_VZnD_WivKw" aggregation="composite" association="_V2BzsEFVEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V2BzskFVEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V2Bzs0FVEeG_VZnD_WivKw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_V2CawEFVEeG_VZnD_WivKw" name="" type="_KJ0EMEFVEeG_VZnD_WivKw" association="_V2BzsEFVEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V2CawUFVEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V2CawkFVEeG_VZnD_WivKw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_k_o3IEFVEeG_VZnD_WivKw" name="AccessControlled"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nwCiMEFVEeG_VZnD_WivKw" name="AccessControlHelper" clientDependency="_9GjMwEFVEeG_VZnD_WivKw">
+    <ownedAttribute xmi:id="_KChT8EFWEeG_VZnD_WivKw" name="manager" type="_v9fr0EFVEeG_VZnD_WivKw" aggregation="composite" association="_KCiiEEFWEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KChT8UFWEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KChT8kFWEeG_VZnD_WivKw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_o5qcsEFVEeG_VZnD_WivKw" name="AccessControlServerHelper">
+    <ownedAttribute xmi:id="_JhpbgEFWEeG_VZnD_WivKw" name="manager" type="_xNJV0EFVEeG_VZnD_WivKw" aggregation="composite" association="_JhrQsEFWEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JhpbgUFWEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JhpbgkFWEeG_VZnD_WivKw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_rmP-wEFVEeG_VZnD_WivKw" name="StandardManager"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_suziQEFVEeG_VZnD_WivKw" name="StandardAccessControlManager">
+    <generalization xmi:id="_-7swgEFVEeG_VZnD_WivKw" general="_rmP-wEFVEeG_VZnD_WivKw"/>
+    <generalization xmi:id="_HngqEEFWEeG_VZnD_WivKw" general="_xNJV0EFVEeG_VZnD_WivKw"/>
+    <generalization xmi:id="_IUqrAEFWEeG_VZnD_WivKw" general="_v9fr0EFVEeG_VZnD_WivKw"/>
+    <ownedAttribute xmi:id="_WzPNYEFWEeG_VZnD_WivKw" name="aclCache" visibility="private" type="_kkO4EEFWEeG_VZnD_WivKw"/>
+    <ownedAttribute xmi:id="_XGOa0EFWEeG_VZnD_WivKw" name="enforce" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_v9fr0EFVEeG_VZnD_WivKw" name="AccessControlManager"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xNJV0EFVEeG_VZnD_WivKw" name="AccessControlManagerSvr"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_9GjMwEFVEeG_VZnD_WivKw" name="Manages" supplier="_k_o3IEFVEeG_VZnD_WivKw" client="_nwCiMEFVEeG_VZnD_WivKw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JhrQsEFWEeG_VZnD_WivKw" name="" memberEnd="_JhrQsUFWEeG_VZnD_WivKw _JhpbgEFWEeG_VZnD_WivKw">
+    <ownedEnd xmi:id="_JhrQsUFWEeG_VZnD_WivKw" name="" type="_o5qcsEFVEeG_VZnD_WivKw" association="_JhrQsEFWEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JhrQskFWEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JhrQs0FWEeG_VZnD_WivKw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_KCiiEEFWEeG_VZnD_WivKw" name="" memberEnd="_KCiiEUFWEeG_VZnD_WivKw _KChT8EFWEeG_VZnD_WivKw">
+    <ownedEnd xmi:id="_KCiiEUFWEeG_VZnD_WivKw" name="" type="_nwCiMEFVEeG_VZnD_WivKw" association="_KCiiEEFWEeG_VZnD_WivKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KCiiEkFWEeG_VZnD_WivKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KCiiE0FWEeG_VZnD_WivKw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kkO4EEFWEeG_VZnD_WivKw" name="AclCache"/>
+</uml:Model>

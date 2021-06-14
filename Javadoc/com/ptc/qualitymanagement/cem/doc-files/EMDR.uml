@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML">
+  <uml:Model xmi:id="_570ZgAc_EeK5g_CezLh1fw" name="EMDR">
+    <ownedComment xmi:id="_EELMwAdEEeK5g_CezLh1fw">
+      <body>Green - CEM Objects&#xD;
+Tan - New EMDR Objects</body>
+    </ownedComment>
+    <packageImport xmi:id="_570ZgQc_EeK5g_CezLh1fw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bCITEAdAEeK5g_CezLh1fw" name="CERegulatoryReportDecision"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hqo4IAdAEeK5g_CezLh1fw" name="CERegulatoryReportDetailsIfc">
+      <ownedAttribute xmi:id="_FY980AdBEeK5g_CezLh1fw" name="reportDecision" type="_bCITEAdAEeK5g_CezLh1fw" isUnique="false" association="_FY8HoAdBEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FY_K8QdBEeK5g_CezLh1fw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FY_K8AdBEeK5g_CezLh1fw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FY8HoAdBEeK5g_CezLh1fw" name="A_CERegulatoryReportDetailsIfc_CERegulatoryReportDecision" memberEnd="_FY980AdBEeK5g_CezLh1fw _FY_yAAdBEeK5g_CezLh1fw">
+      <ownedEnd xmi:id="_FY_yAAdBEeK5g_CezLh1fw" name="cERegulatoryReportDetailsIfc" type="_hqo4IAdAEeK5g_CezLh1fw" isUnique="false" association="_FY8HoAdBEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FZBAIAdBEeK5g_CezLh1fw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FZBAIQdBEeK5g_CezLh1fw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QhGH0AdBEeK5g_CezLh1fw" name="CERegulatoryReport">
+      <generalization xmi:id="_Ta18IAdBEeK5g_CezLh1fw" general="_hqo4IAdAEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_V-7pgAdBEeK5g_CezLh1fw" name="CERegulatoryReportSubmission">
+      <generalization xmi:id="_ZM0h0AdBEeK5g_CezLh1fw" general="_hqo4IAdAEeK5g_CezLh1fw"/>
+      <ownedAttribute xmi:id="_o4LAYAdBEeK5g_CezLh1fw" name="report" type="_QhGH0AdBEeK5g_CezLh1fw" isUnique="false" association="_o3-MEAdBEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o4Qf8AdBEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o4P44AdBEeK5g_CezLh1fw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_o3-MEAdBEeK5g_CezLh1fw" name="A_CERegulatoryReportSubmission_CERegulatoryReport" memberEnd="_o4LAYAdBEeK5g_CezLh1fw _o4RuEAdBEeK5g_CezLh1fw">
+      <ownedEnd xmi:id="_o4RuEAdBEeK5g_CezLh1fw" name="cERegulatoryReportSubmission" type="_V-7pgAdBEeK5g_CezLh1fw" isUnique="false" association="_o3-MEAdBEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o4XNoAdBEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o4X0sAdBEeK5g_CezLh1fw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_36r9UAdBEeK5g_CezLh1fw" name="EMDR">
+      <generalization xmi:id="_6Oek4AdBEeK5g_CezLh1fw" general="_YzLLYAdEEeK5g_CezLh1fw"/>
+      <generalization xmi:id="_lwHi8AdEEeK5g_CezLh1fw" general="_QhGH0AdBEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9G-cAAdBEeK5g_CezLh1fw" name="EMDRSubmission">
+      <generalization xmi:id="_BAqqYAdCEeK5g_CezLh1fw" general="_V-7pgAdBEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HE9IEAdCEeK5g_CezLh1fw" name="EMDRAcknowledgment">
+      <ownedAttribute xmi:id="_QD71QAdCEeK5g_CezLh1fw" name="submission" type="_9G-cAAdBEeK5g_CezLh1fw" isUnique="false" association="_QDsksAdCEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QD-RgQdCEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QD-RgAdCEeK5g_CezLh1fw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_QDsksAdCEeK5g_CezLh1fw" name="A_EMDRAcknowledgment_EMDRSubmission" memberEnd="_QD71QAdCEeK5g_CezLh1fw _QD-4kAdCEeK5g_CezLh1fw">
+      <ownedEnd xmi:id="_QD-4kAdCEeK5g_CezLh1fw" name="eMDRAcknowledgment" type="_HE9IEAdCEeK5g_CezLh1fw" isUnique="false" association="_QDsksAdCEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QEB74AdCEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QECi8AdCEeK5g_CezLh1fw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aGccAAdCEeK5g_CezLh1fw" name="EMDRFailureDetail">
+      <ownedAttribute xmi:id="_hIdGMAdCEeK5g_CezLh1fw" name="acknowledgement" type="_HE9IEAdCEeK5g_CezLh1fw" isUnique="false" association="_hIMngAdCEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hIgJgQdCEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hIgJgAdCEeK5g_CezLh1fw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hIMngAdCEeK5g_CezLh1fw" name="A_EMDRFailureDetail_EMDRAcknowledgment" memberEnd="_hIdGMAdCEeK5g_CezLh1fw _hIgwkAdCEeK5g_CezLh1fw">
+      <ownedEnd xmi:id="_hIgwkAdCEeK5g_CezLh1fw" name="eMDRFailureDetail" type="_aGccAAdCEeK5g_CezLh1fw" isUnique="false" association="_hIMngAdCEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hIjM0AdCEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hIjM0QdCEeK5g_CezLh1fw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7yPoQAdCEeK5g_CezLh1fw" name="BlankValue">
+      <generalization xmi:id="_O6mZMAdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DlmP0AdDEeK5g_CezLh1fw" name="MedwatchReportDetailsIfc">
+      <ownedAttribute xmi:id="_IRfXMAdDEeK5g_CezLh1fw" name="medwatchReport" type="_YzLLYAdEEeK5g_CezLh1fw" isUnique="false" association="_IRRUwAdDEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IRiagQdDEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IRiagAdDEeK5g_CezLh1fw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_IRRUwAdDEeK5g_CezLh1fw" name="A_EMDRDetailsIfc_MedwatchReportIfc" memberEnd="_IRfXMAdDEeK5g_CezLh1fw _IRjBkAdDEeK5g_CezLh1fw">
+      <ownedEnd xmi:id="_IRjBkAdDEeK5g_CezLh1fw" name="class_0" type="_DlmP0AdDEeK5g_CezLh1fw" isUnique="false" association="_IRRUwAdDEeK5g_CezLh1fw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IRmr8AdDEeK5g_CezLh1fw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IRmr8QdDEeK5g_CezLh1fw"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RGQYcAdDEeK5g_CezLh1fw" name="ConclusionCode">
+      <generalization xmi:id="_Vf__4AdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Wa2ekAdDEeK5g_CezLh1fw" name="DeviceCode">
+      <generalization xmi:id="_kffeAAdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_atDTkAdDEeK5g_CezLh1fw" name="MethodCode">
+      <generalization xmi:id="_kr_o8AdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_e_VoIAdDEeK5g_CezLh1fw" name="PatientCode">
+      <generalization xmi:id="_k6_uQAdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hnWzQAdDEeK5g_CezLh1fw" name="ResultCode">
+      <generalization xmi:id="_lJePIAdDEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YzLLYAdEEeK5g_CezLh1fw" name="MedwatchReportIfc"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-Bwh4AdEEeK5g_CezLh1fw" name="TherapyDate">
+      <generalization xmi:id="_AYNb4AdFEeK5g_CezLh1fw" general="_DlmP0AdDEeK5g_CezLh1fw"/>
+    </packagedElement>
+    <profileApplication xmi:id="_570Zggc_EeK5g_CezLh1fw">
+      <eAnnotations xmi:id="_570Zgwc_EeK5g_CezLh1fw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <standard:Realization xmi:id="_YX0B4AdAEeK5g_CezLh1fw"/>
+</xmi:XMI>

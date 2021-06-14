@@ -1,0 +1,158 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Persistence Architectural Overview</title>
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div>
+
+<h1><a name="OLE_LINK2"></a><a name="OLE_LINK1">Persistence Architectural Overview</a></h1>
+
+<p>The persistence layer is responsible for storing and
+retrieving objects in the Windchill Method Server to and from a persistent
+datastore such as a database.</p>
+
+<p>The architecture is implemented using several packages.  The
+<a href="../../../wnc/CommonCore/wt/dataservice/package-summary.html">dataservice</a>
+package provides the abstraction for a datastore.  For example, the unique
+implementation differences between Oracle and SQLServer are encapsulated in the
+classes, <a href="../../../wnc/CommonCore/wt/dataservice/Oracle.html">wt.dataservice.Oracle</a>
+and <a href="../../../wnc/CommonCore/wt/dataservice/SQLServer.html">wt.dataservice.SQLServer</a>,
+respectively.  The main supported APIs for accessing persistence operations are
+defined and implemented in the <a href="../wt/fc/package-summary.html">fc</a>
+package.  To formulate queries to retrieve persistent data, the <a
+href="../wt/query/package-summary.html">query</a> package is used to build
+query specifications for modeled classes and attributes and the <a
+href="../com/ptc/core/query/common/package-summary.html">type query</a> package
+is used to build query specifications for types and global/standard attributes.</p>
+
+<h2>Object Relational Mapping</h2>
+
+<p>The persistence layer implements an object to relational
+mapping based on Java annotations that are specified directly in the source code.  These
+annotations are used at compile time to generate serialized
+introspection information files that can be accessed via introspection APIs.  A
+Data Definition Language (DDL) creation tool is used for generating DDL scripts
+that create the tables, index, and other schema objects that must exist in the
+relational database.  The DDL scripts must be run prior to the application
+server start up (usually at install time).  The same introspection files and
+APIs are used at application server runtime to generate Data Manipulation
+Language (DML) that is executed using JDBC APIs.  The basic persistence
+operations create, read, update, and delete are implemented using DML INSERT,
+SELECT, UPDATE, and DELETE, respectively.</p>
+
+<p>The mapping is based on the following rules:</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li>For an object to be persisted, its class must implement
+     the <a href="../wt/fc/Persistable.html">wt.fc.Persistable</a> interface.</li>
+ <li>Each class maps to its own database table</li>
+ <li>Persistent attributes for simple types (e.g. String,
+     Number, Timestamp) map to table columns</li>
+ <li>Aggregated attributes (a 1-to-1 relationship with a class
+     that implements <a href="../wt/fc/ObjectMappable.html">wt.fc.ObjectMappable</a>)
+     are decomposed into their simple attributes</li>
+ <li>Attributes are stored as Binary Large Objects (Blobs) when
+     their type is non-simple or their cardinality is unbounded (1-to-many)</li>
+ <li>Classes inherit persistent attributes from super types</li>
+</ul>
+
+<p>The following UML diagram shows an example mapping. </p>
+
+<p><img border=0 width=624 height=254 id="Picture 1"
+src="PersistenceArchitecturalOverview_image001.gif"></p>
+
+<p><img border=0 width=675 height=150 id="Object 4"
+src="PersistenceArchitecturalOverview_image002.gif"></p>
+
+<p>The class MyItem maps directly to the MyItem table because
+it extends <a href="../wt/fc/Item.html">wt.fc.Item</a> which implements the <a
+href="../wt/fc/Persistable.html">Persistable</a> interface.  The super class
+attributes would include all field of <a href="../wt/fc/PersistInfo.html">wt.fc.PersistInfo</a>
+since these are aggregated by <a href="../wt/fc/Persistable.html">Persistable</a>.  The
+MyItem attributes a1, a2, and a3 are all mapped to columns.  The
+attribute a3 is mapped to a Blob column type since it is not a simple type with
+a SQL column type representation.  The work attribute is an aggregate of the
+MyAddress class so the street, city, state, and zip attributes are all mapped
+to individual columns.  The list attribute can contain multiple values so it is
+mapped to a Blob column type also.</p>
+
+<p>Persistent relationships can be implemented between
+Persistable objects using a <a href="../wt/fc/BinaryLink.html">wt.fc.BinaryLink</a>.
+A <a href="../wt/fc/BinaryLink.html">BinaryLink</a> implements
+<a href="../wt/fc/Persistable.html">Persistable</a> and aggregates references to
+two objects, role A and role B.  It can be used to implement relationships with
+any cardinality.  The <a href="../wt/fc/ForeignKeyLink.html">wt.fc.ForeignKeyLink</a>
+is a specialization of <a href="../wt/fc/BinaryLink.html">BinaryLink</a>.
+This class implements the association by aggregating the role B reference in
+the role A object's table.  It can only be used when the cardinality for the
+role B object is zero or one.</p>
+
+<p>Objects that are stored persistently have an identifier that
+is unique within the database.  More than one copy of an object can exist in
+memory and each can be manipulated independently.  Any changes to in memory
+objects are only reflected in the persistent state when an insert, update or
+delete is executed and the associated transaction is committed.  The
+persistent attribute values are mapped to the associated database columns and
+the appropriate database command is executed.  Likewise, when a query is
+executed, the result column values are mapped to the attribute values in the
+object.  When multiple copies of a persistent object with the same unique
+identifier are updated or deleted, the persistence layer ensures that the first
+operation is not overwritten by subsequent operations.  This implemented using
+an update count mechanism.  For an operation to successfully complete, the in
+memory object's update count must match the state in the database.  Otherwise,
+a <a href="../wt/pom/ObjectIsStaleException.html">wt.pom.ObjectIsStaleException</a>
+is thrown.  To avoid this type of exception, the object should be locked when
+it is updated by concurrent threads or refreshed from the database when it is
+updated by the same thread.</p>
+
+<h2>Internal Architecture</h2>
+
+<p>The main methods used to exist in the
+<a href="../wt/fc/StandardPersistenceManager.html">wt.fc.StandardPersistenceManager</a>.
+This is a standard Windchill service that can be accessed through the service
+interface and helpers, <a href="../wt/fc/PersistenceManager.html">wt.fc.PersistenceManager</a>,
+<a href="../wt/fc/PersistenceManagerSvr.html">wt.fc.PersistenceManagerSvr</a>, <a
+href="../wt/fc/PersistenceHelper.html">wt.fc.PersistenceHelper</a>, and <a
+href="../wt/fc/PersistenceServerHelper.html">wt.fc.PersistenceServerHelper</a>.
+  The <a href="../wt/fc/StandardPersistenceManager.html">StandardPersistenceManager</a>
+forwards calls to the <a href="../wt/pom/package-summary.html">pom</a> layer
+and specifically to the <a href="../wt/pom/PersistentObjectManager.html">wt.pom.PersistentObjectManager</a>.
+  The <a href="../wt/pom/package-summary.html">pom</a> layer is also responsible
+for handling database connections and transactions.  Database connections are
+implicitly obtained as needed when processing operations.  The <a
+href="../wt/pom/POMHandler.html">wt.pom.POMHandler</a> implements a connection
+pool to balance database connection resources with multiple, concurrent requests.</p>
+
+<p>Database transactions are implemented via <a href="../wt/pom/Transaction.html">wt.pom.Transaction</a>.
+  A transaction enables multiple operations to be committed as a single unit of work.  The
+<a href="../wt/pom/Transaction.html">Transaction</a> object is designed to be used
+in Java try/finally blocks and supports logical nesting.  Each local <a
+href="../wt/pom/Transaction.html">Transaction</a> can be committed or rolled
+back.  If a rollback method is called, the database rollback occurs
+immediately.  If a commit method is called, the actual database commit will
+only occur for the method call on the outer most nested <a href="../wt/pom/Transaction.html">Transaction</a>
+ object.  The persistence layer uses a read-committed transaction isolation level.  This means that
+concurrent operations uncommitted updates in one transaction are not seen by
+other transactions until a commit occurs.  Blocking only occurs when two
+concurrent operations attempt to update, delete, or lock the same object.</p>
+
+<p>The <a href="../wt/pom/PersistentObjectManager.html">PersistentObjectManager</a>
+forwards calls to the <a href="../wt/pds/package-summary.html">pds</a> layer
+and specifically to a class that implements the <a href="../wt/pds/PDSIfc.html">wt.pds.PDSIfc</a>
+instance.  Generally, there is a <a href="../wt/pds/PDSIfc.html">PDSIfc</a>
+implementation for each support database.  The <a href="../wt/pds/package-summary.html">pds</a>
+layer is also responsible for generating DML SQL statements, executing the statements, and returning
+results.  Part of these responsibilities also includes the mapping of the
+object attributes to SQL data and SQL results to object attributes.  The SQL
+statements are executed using standard Java Database Connectivity (JDBC) APIs.
+</p>
+
+</div>
+
+</body>
+
+</html>

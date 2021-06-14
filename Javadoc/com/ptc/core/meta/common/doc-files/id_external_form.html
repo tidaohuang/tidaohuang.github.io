@@ -1,0 +1,428 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Describes the interfaces for and relationships between meta data concepts: types, attributes, associations, and criteria</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><I><FONT FACE="Arial"><P>Identifier External Form: General Syntax</P>
+</B></I></FONT><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" SIZE=2><P>&lt;element_identifier&gt; = &lt;definition_identifier&gt;~~&lt;instance_identifier&gt;</P>
+
+<UL>
+<LI>&lt;definition_identifier&gt; = &lt;type_identifier&gt; | &lt;attribute_type_identifier&gt;</LI>
+<LI>&lt;type_identifier&gt; = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">&lt;basic_type_identifier&gt; </FONT><FONT FACE="Arial" SIZE=2>|</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"> </FONT><FONT FACE="Arial" SIZE=2>&lt;type_identifier&gt;~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">&lt;basic_association_type_identifier&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2><LI>&lt;attribute_type_identifier&gt; = &lt;type_identifier&gt;~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">&lt;basic_attribute_type_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2> | &lt;type_identifier&gt;~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">&lt;basic_association_type_identifier&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2><LI>&lt;constraint_type_identifier&gt; = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000">&lt;basic_application_type_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff">&lt;basic_constraint_type_identifier&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2><LI>&lt;instance_identifier&gt; = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">&lt;basic_instance_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2> | &lt;instance_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">~&lt;basic_instance_identifier&gt;</LI></UL>
+
+
+</FONT><FONT FACE="Arial" SIZE=2><P>where:</P>
+
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>&lt;basic_type_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2> = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">&lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080"><LI>&lt;basic_attribute_type_identifier&gt; = &lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>&lt;basic_association_type_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2> = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">&lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;&lt;direction&gt;</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">&lt;basic_type_identifier&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>&lt;direction&gt;</FONT><FONT FACE="Arial" SIZE=2> = </FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">@</FONT><FONT FACE="Arial" SIZE=2> | </FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">^   </FONT><FONT FACE="Arial" SIZE=2>(@=reverse, ^=forward)</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000"><LI>&lt;basic_application_type_identifier&gt;</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080"> </FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">= </FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000">&lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff"><LI>&lt;basic_constraint_type_identifier&gt; </FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">= </FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff">&lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080"><LI>&lt;basic_instance_identifier&gt; </FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">= </FONT><FONT FACE="Arial" SIZE=2 COLOR="#000080">&lt;protocol&gt;&lt;protocol_separator&gt;&lt;protocol_specific_string&gt;</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">
+</FONT><FONT FACE="Arial" SIZE=2><P>where:</P>
+
+
+<UL>
+<LI>&lt;protocol_separator&gt; = &quot;|&quot;</LI></UL>
+
+</FONT><B><I><FONT FACE="Arial"><P>Identifier External Form: Specific Protocols</P>
+</I></FONT><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" SIZE=2><P>TYPES</P>
+
+<P>Windchill Types</P>
+</B><P>&lt;protocol&gt; = &quot;WCTYPE&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;classname&gt; | &lt;protocol_specific_string&gt;&lt;separator&gt;&lt;subtype_name&gt;</P>
+
+<UL>
+<LI>&lt;classname&gt; = fully qualified Java classname of the closest, concrete, peristable class representing the type</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI>
+<LI>&lt;subtype_name&gt; = The name of a type definition, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI></UL>
+
+
+<B><P>Instanced Based Reference Types</P>
+</B><P>&lt;protocol&gt; = &quot;IBRTYPE&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;attribute_name&gt; | &lt;protocol_specific_string&gt;&lt;separator&gt;&lt;attribute_name&gt;</P>
+
+<UL>
+<LI>&lt;attribute_name&gt; = The name of an instance based reference attribute, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI></UL>
+
+
+<B><P>&nbsp;</P>
+<P>ATTRIBUTES AND ASSOCIATIONS</P>
+</B>
+<B><P>Modeled Attributes and Associations</P>
+</B><P>&lt;protocol&gt; = &quot;MBA&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;attribute_name&gt; | &lt;protocol_specific_string&gt;&lt;separator&gt;&lt;attribute_name&gt;</P>
+
+<UL>
+<LI>&lt;attribute_name&gt; = A Java attribute identifier representing all or part of the name of the attribute or role, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI>
+<LI>&lt;separator&gt; = &quot;.&quot;</LI></UL>
+
+
+<B><P>Instance Based Attributes</P>
+</B><P>&lt;protocol&gt; = &quot;IBA&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;attribute_name&gt; | &lt;protocol_specific_string&gt;&lt;separator&gt;&lt;attribute_name&gt;</P>
+
+<UL>
+<LI>&lt;attribute_name&gt; = The name of an instance based reference attribute, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI></UL>
+
+
+<B><P>Instance Based Associations</P>
+</B><P>&lt;protocol&gt; = &quot;IBA&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &quot;holder&quot; | &quot;value&quot;</P>
+
+<UL>
+<LI>&quot;IBA|holder@&quot;: The association is an attribute of the type identified by the preceding &lt;type_identifier&gt;.</LI>
+<LI>&quot;IBA|value^&quot;: The type identified by the following &lt;type_identifier&gt; is referenced by the association.</LI>
+<LI>&quot;IBA|value@&quot;: The type identified by the preceding &lt;type_identifier&gt; is referenced by the association.</LI>
+<LI>&quot;IBA|holder^&quot;: The association is an attribute of the type identified by the following &lt;type_identifier&gt;.</LI></UL>
+
+
+<P>&nbsp;</P>
+<B><P>CONSTRAINTS</P>
+
+<P>Modeled Constraints</P>
+</B><P>&lt;protocol&gt; = &quot;MBC&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;binding_rule_classname&gt;&lt;separator&gt;&lt;qualified_attribute&gt;&lt;separator&gt;&lt;enforcement_rule_classname&gt;</P>
+
+<UL>
+<LI>&lt;binding_rule_classname&gt; = fully qualified Java classname of the binding rule used by the identified constraint</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI>
+<LI>&lt;qualified_attribute&gt; = &lt;classname&gt;&lt;separator_2&gt;&lt;attribute_name&gt;</LI>
+<LI>&lt;classname&gt; = fully qualified Java classname of the class to which the primary attribute being constrained belongs</LI>
+<LI>&lt;separator_2&gt; = &quot;.&quot;</LI>
+<LI>&lt;attribute_name&gt; = A Java attribute identifier representing the name of the attribute being constrained, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI>
+<LI>&lt;enforcement_rule_classname&gt; = fully qualified Java classname of the enforcement rule used by the identified constraint</LI></UL>
+
+
+<B><P>Runtime Defined Constraints</P>
+</B><P>&lt;protocol&gt; = &quot;RTC&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;binding_rule_classname&gt;&lt;separator&gt;&lt;qualified_attribute&gt;&lt;separator&gt;&lt;enforcement_rule_classname&gt;</P>
+
+<UL>
+<LI>&lt;binding_rule_classname&gt; = fully qualified Java classname of the binding rule used by the identified constraint</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI>
+<LI>&lt;qualified_attribute&gt; = &lt;attribute_name&gt; | &lt;qualified_attribute&gt;&lt;separator_2&gt;&lt;attribute_name&gt;</LI>
+<LI>&lt;attribute_name&gt; = The name of an instance based attribute, consisting of characters <I>x</I> such that Character.isJavaLetterOrDigit(<I>x</I>) = true, and such that the first character <I>y</I> of the identifier is such that Character.isJavaLetter(<I>y</I>) = true</LI>
+<LI>&lt;separator_2&gt; = &quot;|&quot;</LI>
+<LI>&lt;enforcement_rule_classname&gt; = fully qualified Java classname of the enforcement rule used by the identified constraint</LI></UL>
+
+
+<B><P>&nbsp;</P>
+<P>APPLICATIONS</P>
+
+<P>Windchill Applications</P>
+</B><P>&lt;protocol&gt; = &quot;WCAPP&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;app_type&gt;</P>
+
+<UL>
+<LI>&lt;app_type&gt; = A type of Windchill application</LI></UL>
+
+
+<B><P>&nbsp;</P>
+<P>INSTANCE IDENTIFIERS</P>
+
+<P>Instance Identifier for Windchill Persitables</P>
+</B><P>&lt;protocol&gt; = &quot;WCP&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;oid&gt;&lt;separator&gt;&lt;update_count&gt;</P>
+
+<UL>
+<LI>&lt;oid&gt; = An integer number representing the OID of the persisted object instance</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI>
+<LI>&lt;update_count&gt; = An integer number representing the update count of the persisted object instance</LI></UL>
+
+
+<B><P>Instance Identifier for Iterated Windchill Persitables</P>
+</B><P>&lt;protocol&gt; = &quot;WCI&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;oid&gt;&lt;separator&gt;&lt;update_count&gt;&lt;separator&gt;&lt;branch_id&gt;</P>
+
+<UL>
+<LI>&lt;oid&gt; = An integer number representing the OID of the persisted object instance</LI>
+<LI>&lt;separator&gt; = &quot;|&quot;</LI>
+<LI>&lt;update_count&gt; = An integer number representing the update count of the persisted object instance</LI>
+<LI>&lt;branch_id&gt; = A string representing the version branch of the iterated object.</LI></UL>
+
+
+<B><P>Instance Identifier for Array Elements</P>
+</B><P>&lt;protocol&gt; = &quot;INDEX&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;index&gt;</P>
+
+<UL>
+<LI>&lt;index&gt; = An integer number representing the index of the element within an array</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=1>
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Instance Identifier for Windchill Applications</P>
+</B><P>&lt;protocol&gt; = &quot;WCAPPI&quot;</P>
+<P>&lt;protocol_specific_string&gt; = &lt;name&gt;</P>
+
+<UL>
+<LI>&lt;name&gt; = The name of a Windchill application</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=1><P>&nbsp;</P>
+</FONT><B><I><FONT FACE="Arial"><P>Identifier External Form: Examples</P>
+</B></I></FONT><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" COLOR="#0000ff"><P>&lt;basic_type_identifier&gt;</FONT><FONT FACE="Arial">:</P>
+</FONT><FONT FACE="Arial" SIZE=1>
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2> </LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|wt.part.WTPartUsageLink</LI>
+<LI>IBRTYPE|Supplier|Distributor</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" COLOR="#008080"><P>&lt;basic_attribute_type_identifier&gt;</FONT><FONT FACE="Arial">:</P>
+</FONT><FONT FACE="Arial" SIZE=1>
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080"><LI>MBA|name</LI>
+<LI>MBA|iterationInfo.creator.name  </FONT><FONT FACE="Arial" SIZE=2>(Protocol supports all attributes including cookies, structured attributes, derived attributes.)</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080"><LI>IBA|LengthIDiameterIInner</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=1 COLOR="#008080">
+</FONT><FONT FACE="Arial" COLOR="#ff0000"><P>&lt;basic_association_type_identifier&gt;:</P>
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distribitor</LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000"><LI>IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessEntity.BusinessEntity</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" COLOR="#ff00ff"><P>&lt;basic_constraint_type_identifier&gt;:</P>
+</FONT><FONT FACE="Arial" SIZE=1 COLOR="#ff00ff">
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff"><LI>RTC|com.ptc.core.meta.common.impl.SingleAttributeBindingRule|Length|Diameter|com.ptc.core.meta.common.impl.RequiredEnforcementRule</FONT><FONT FACE="Arial" SIZE=2> </LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff"><LI>MBC|com.ptc.core.meta.common.impl.SingleAttributeBindingRule|wt.part.WTPartMaster.name|com.ptc.core.meta.common.impl.UppercaseRule</FONT><FONT FACE="Arial" SIZE=2> </LI>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff"><LI>RTC|com.ptc.core.meta.common.impl.MultiAttributeBindingRule||com.myco.MakeSureAreaIsNotTooBigRule</FONT><FONT FACE="Arial" SIZE=2> </LI></UL>
+
+</FONT><FONT FACE="Arial" COLOR="#808000">
+<P>&lt;basic_application_type_identifier&gt;</FONT><FONT FACE="Arial">:</P>
+</FONT><FONT FACE="Arial" SIZE=1>
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000"><LI>WCAPP|Module</LI>
+<LI>WCAPP|Core</LI></UL>
+
+</FONT><FONT FACE="Arial" COLOR="#800080">
+<P>&lt;basic_instance_identifier&gt;:</P>
+
+<UL>
+</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080"><LI>WCP|764336775|2</LI>
+<LI>WCI|01653254325|5|B.1</LI>
+<LI>INDEX|2</LI>
+<LI>WCAPPI|SourcingFactor</LI>
+<LI>WCAPPI|CoreTyping</LI></UL>
+
+
+</FONT><FONT FACE="Arial" SIZE=1><P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><FONT FACE="Arial"><P>&lt;definition_identifier&gt;:</P>
+</FONT><B><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" SIZE=2><P>Basic MBA (‘Part Number’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|number</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA (‘Inner Diameter(s)’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|Length|Diameter|Inner</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for IBA association (‘Distributor(s)’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for reverse IBA association (Manufacturer(s) for which the part is listed as one of the ‘Manufactured Part(s)’):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|ManufacturedPart</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Manufacturer</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for IBA association (‘Name(s)’ of the ‘Distributor(s)’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|name</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for IBA association (‘Rating(s)’ of the ‘Distributor(s)’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|Rating</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA (dependent) on IBA association (‘Supplier Part Number(s)’ of the part for each of the Distributor(s)):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|PartNumber|Supplier</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for MBA association (‘Part Master’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for reverse MBA association (‘Widget(s)’ which reference the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|partReference@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|myco.Widget</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for MBA association (‘Name’ of the ‘Part Master’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|name</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for MBA association (‘Master Code’ of the ‘Part Master’ of the part):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|MasterCode</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Link object (‘Part Usage Link(s)’ for which the part participates in the ‘Used By’ role):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on link object (‘Amount(s)’ on the ‘Part Usage Link(s)’ for which the part participates in the ‘Used By’ role):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|quantity.amount</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on link object (‘Assembly Code(s)’ on the ‘Part Usage Link(s)’ for which the part participates in the ‘Used By’ role):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|AssemblyCode</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for link attribute (‘Part Master(s)’ which the part ‘uses’):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for link attribute (‘Part Number(s)’ of the ‘Part Master(s)’ which the part ‘uses’):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|number</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for link attribute (‘Master Code(s)’ of the ‘Part Master(s)’ which the part ‘uses’):</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|MasterCode</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic Constraint</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000"><LI>WCAPP|Core</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff">RTC|com.ptc.core.meta.common.impl.SingleAttributeBindingRule|Length|Diameter|com.ptc.core.meta.common.impl.RequiredEnforcementRule</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=2>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</FONT><FONT FACE="Arial"><P>&lt;element_identifier&gt;:</P>
+</FONT><B><FONT FACE="Arial" SIZE=1>
+</FONT><FONT FACE="Arial" SIZE=2><P>Basic MBA:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|number</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|Length|Diameter|Inner</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|764336775|2</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Second element of a basic array MBA:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|contact</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">INDEX|2</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for IBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|8453656345|3</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|3745754532|23</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for reverse IBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|ManufacturedPart</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Manufacturer</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|5634763487|17</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56457674|27</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for IBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|name</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|8453656345|3</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|3745754532|23</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for IBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|value^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.csm.businessentity.BusinessEntity|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|Rating</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|8453656345|3</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|3745754532|23</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|123235665|12</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA dependent on IBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">IBA|holder@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">IBRTYPE|Supplier|Distributor</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|PartNumber|Supplier</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|8453656345|3</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|98678675|2</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for MBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|87645634|17</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for reverse MBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|partReference@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|myco.Thingy</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|4457345773|3</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for MBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|name</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|87645634|17</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for MBA association:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|masterReference^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|MasterCode</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|87645634|17</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|65536346|7</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Link object:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on link object:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|quantity.amount</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on link object:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|AssemblyCode</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|840385767|1</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Other side object for link attribute:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|567754566|13</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic MBA on other side object for link attribute:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">MBA|number</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|567754566|13</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic IBA on other side object for link attribute:</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff"><LI>WCTYPE|myco.part.MyPart|InternalPart|TopSecret</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|usedBy@</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartUsageLink</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff0000">MBA|uses^</FONT><FONT FACE="Arial" SIZE=2 COLOR="#0000ff">WCTYPE|wt.part.WTPartMaster</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#008080">IBA|MasterCode</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCI|01653254325|5|B.1</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|56376369|2</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|567754566|13</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCP|49673465|3</LI></UL>
+
+</FONT><B><FONT FACE="Arial" SIZE=2><P>Basic Constraint</P>
+
+<UL>
+</B></FONT><FONT FACE="Arial" SIZE=2 COLOR="#808000"><LI>WCAPP|Module</FONT><FONT FACE="Arial" SIZE=2>~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#ff00ff">RTC|com.ptc.core.meta.common.impl.SingleAttributeBindingRule|Length|Diameter|com.ptc.core.meta.common.impl.RequiredEnforcementRule</FONT><FONT FACE="Arial" SIZE=2>~~</FONT><FONT FACE="Arial" SIZE=2 COLOR="#800080">WCAPPI|SourcingFactor~ WCP|3953257|5</LI></UL>
+
+</FONT><FONT FACE="Arial" SIZE=2></FONT></BODY>
+</HTML>

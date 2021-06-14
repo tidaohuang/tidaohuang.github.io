@@ -1,0 +1,597 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Multithreaded Persistence Operations</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+h4
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+h5
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.7in;
+	margin-bottom:.0001pt;
+	text-indent:-.7in;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+h6
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.8in;
+	margin-bottom:.0001pt;
+	text-indent:-.8in;
+	font-size:11.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.9in;
+	margin-bottom:.0001pt;
+	text-indent:-.9in;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-1.0in;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.1in;
+	margin-bottom:.0001pt;
+	text-indent:-1.1in;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:10.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:20.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:30.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:40.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:50.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:70.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:80.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:-.25pt;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;
+	layout-grid-mode:line;}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:.5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Courier New";}
+code
+	{font-family:"Courier New";}
+pre
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	background:#EEEEEE;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:black;}
+p.DocTitle, li.DocTitle, div.DocTitle
+	{mso-style-name:Doc_Title;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:-.3in;
+	text-align:right;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.TitlePage, li.TitlePage, div.TitlePage
+	{mso-style-name:Title_Page;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.NormalIndent, li.NormalIndent, div.NormalIndent
+	{mso-style-name:Normal_Indent;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.HelpText, li.HelpText, div.HelpText
+	{mso-style-name:Help_Text;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:red;
+	display:none;
+	font-weight:bold;}
+p.normalwspace, li.normalwspace, div.normalwspace
+	{mso-style-name:"normal w space";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:1.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.Requirement, li.Requirement, div.Requirement
+	{mso-style-name:Requirement;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.Boldheading, li.Boldheading, div.Boldheading
+	{mso-style-name:"Bold heading";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Helvetica","sans-serif";
+	font-weight:bold;}
+p.Note, li.Note, div.Note
+	{mso-style-name:Note;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.Appendix, li.Appendix, div.Appendix
+	{mso-style-name:Appendix;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-indent:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.TableRow, li.TableRow, div.TableRow
+	{mso-style-name:TableRow;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.TableHeader, li.TableHeader, div.TableHeader
+	{mso-style-name:TableHeader;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.Example, li.Example, div.Example
+	{mso-style-name:Example;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.Headind0, li.Headind0, div.Headind0
+	{mso-style-name:"Headind 0";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	font-size:16.0pt;
+	font-family:"Helvetica","sans-serif";
+	font-weight:bold;}
+p.Reference, li.Reference, div.Reference
+	{mso-style-name:Reference;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.standard, li.standard, div.standard
+	{mso-style-name:standard;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.Code, li.Code, div.Code
+	{mso-style-name:Code;
+	mso-style-link:"Code Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:Courier;}
+p.Indentedlistbullet, li.Indentedlistbullet, div.Indentedlistbullet
+	{mso-style-name:"Indented list bullet";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.task, li.task, div.task
+	{mso-style-name:task;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.Listing
+	{mso-style-name:Listing;
+	font-family:"Courier New";}
+p.paragraph1, li.paragraph1, div.paragraph1
+	{mso-style-name:paragraph1;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.CodeChar
+	{mso-style-name:"Code Char";
+	mso-style-link:Code;
+	font-family:Courier;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoTitle><a name="OLE_LINK2"></a><a name="OLE_LINK1">Multi-Object Persistence Operations</a></p>
+
+<h1><a name="_Ref27294569">Batch Update/Delete Guidelines</a></h1>
+<p>
+The batch update/delete operations represent the most performant option for
+affecting change in the database because they minimize both the data needed to
+perform the operation and the data eeded to affect the change – neither requires
+that the objects to be changed first be retrieved from the database and only the
+columns to change need to be sent (as opposed to full persistables) in the case of a
+update. These APIs should be considered when:
+</p>
+<ul>
+<li>There is no need to bring the object back into the VM, either to perform tests or to dispatch events</li>
+<li>None of the objects involved in the batch operation exist in memory prior to
+the batch operation</li>
+</ul>
+<p>
+In most cases, it is sufficient to say that their use should be limited only to cases
+where there is never a need to bring the object (or its reference) back to memory
+and should never be used on objects already in memory. The above guidelines are
+based on the fact that the performance benefits drop when the data is actually
+needed and by the fact that the changes will not be reflected in any of the inmemory
+objects. However, a gray area for batch update is in cases where the
+references are needed for event dispatch, the dispatched event indicates that the
+change has occurred, and the listeners need not inflate.
+</p>
+
+<h1><a name="_Ref27294570">Transaction Listener Guidelines</a></h1>
+
+<h2>Deferred validation/work with transaction listeners</h2>
+
+<p>
+One of the biggest architecture shifts associated with multi-object operations is
+the fact that multiple, highly-related, objects are changing in a single transaction.
+In the single-object model, only one part was being revised or checked out, for
+example, and code could either assume all the related data was not changing or
+would explicitly lock the related objects to prevent change; the essential view of
+the database is that everything outside of the work being done to support the
+single-object operation is static and unchanging. Multi-object operations break
+this assumption and force the code to consider what it would mean for related
+objects in the same transaction to change, either as part of the operation itself or
+possibly either prior to or post the operation.
+</p>
+<p>
+There will be cases where it is either impractical or impossible to deal with the
+system while it is in flux; it will be impossible for the operation, when invoked, to
+validate that the resultant state of the database would be valid or even that
+everything that would need to be done has been done. This is where transaction
+listeners come into play. They allow the operation to defer work until the
+transaction is about to commit.
+</p>
+<p>
+The “classic ” use case for deferred validation is when changes to related objects
+in the same transaction impact the logic of the listener and its APIs. Because of
+flat-lining and the splitting of collections, if the listener/API cannot handle any of
+the following, it should move its work into a transaction listener:
+</p>
+
+<ul>
+<li>A related object having already undergone change prior to this object's/collection's changes that are being handled now.</li>
+<li>The changes occurring to related objects in the same collection.</li>
+<li>A related object changing after this listener/API processes it.</li>
+</ul>
+
+<p>
+Remember that the other objects that are changing will likely have their own
+events associated with them, returning to the same listener/API. You should
+consider, based on the above points, what happens when related data changes and
+is processed by the same code both before and after this collection is processed
+and what it means for data in the same collection to be changing.
+</p>
+
+</div>
+
+</body>
+
+</html>

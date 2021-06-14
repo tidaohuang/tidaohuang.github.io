@@ -1,0 +1,938 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Result Set Scalability</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+h3
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+h4
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Arial","sans-serif";}
+h5
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.7in;
+	margin-bottom:.0001pt;
+	text-indent:-.7in;
+	font-size:11.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:normal;}
+h6
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.8in;
+	margin-bottom:.0001pt;
+	text-indent:-.8in;
+	font-size:11.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.9in;
+	margin-bottom:.0001pt;
+	text-indent:-.9in;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-1.0in;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.1in;
+	margin-bottom:.0001pt;
+	text-indent:-1.1in;
+	font-size:9.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	text-transform:uppercase;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:10.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-variant:small-caps;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:20.0pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:30.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:40.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:50.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:70.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:80.0pt;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:.25in;
+	margin-left:0in;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-align:justify;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";
+	letter-spacing:-.25pt;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;
+	layout-grid-mode:line;}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:.5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Courier New";}
+code
+	{font-family:"Courier New";}
+pre
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	background:#EEEEEE;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	color:black;}
+p.DocTitle, li.DocTitle, div.DocTitle
+	{mso-style-name:Doc_Title;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:-.3in;
+	text-align:right;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.TitlePage, li.TitlePage, div.TitlePage
+	{mso-style-name:Title_Page;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.NormalIndent, li.NormalIndent, div.NormalIndent
+	{mso-style-name:Normal_Indent;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.HelpText, li.HelpText, div.HelpText
+	{mso-style-name:Help_Text;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:red;
+	display:none;
+	font-weight:bold;}
+p.normalwspace, li.normalwspace, div.normalwspace
+	{mso-style-name:"normal w space";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:1.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	color:black;}
+p.Requirement, li.Requirement, div.Requirement
+	{mso-style-name:Requirement;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-style:italic;}
+p.Boldheading, li.Boldheading, div.Boldheading
+	{mso-style-name:"Bold heading";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Helvetica","sans-serif";
+	font-weight:bold;}
+p.Note, li.Note, div.Note
+	{mso-style-name:Note;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;
+	font-style:italic;}
+p.Appendix, li.Appendix, div.Appendix
+	{mso-style-name:Appendix;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-indent:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	font-weight:bold;}
+p.TableRow, li.TableRow, div.TableRow
+	{mso-style-name:TableRow;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.TableHeader, li.TableHeader, div.TableHeader
+	{mso-style-name:TableHeader;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;
+	font-style:italic;}
+p.Author, li.Author, div.Author
+	{mso-style-name:Author;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.Example, li.Example, div.Example
+	{mso-style-name:Example;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.Headind0, li.Headind0, div.Headind0
+	{mso-style-name:"Headind 0";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	font-size:16.0pt;
+	font-family:"Helvetica","sans-serif";
+	font-weight:bold;}
+p.Reference, li.Reference, div.Reference
+	{mso-style-name:Reference;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.standard, li.standard, div.standard
+	{mso-style-name:standard;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.Code, li.Code, div.Code
+	{mso-style-name:Code;
+	mso-style-link:"Code Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:9.0pt;
+	font-family:Courier;}
+p.Indentedlistbullet, li.Indentedlistbullet, div.Indentedlistbullet
+	{mso-style-name:"Indented list bullet";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.task, li.task, div.task
+	{mso-style-name:task;
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Arial","sans-serif";}
+span.Listing
+	{mso-style-name:Listing;
+	font-family:"Courier New";}
+p.paragraph1, li.paragraph1, div.paragraph1
+	{mso-style-name:paragraph1;
+	margin-top:4.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+span.CodeChar
+	{mso-style-name:"Code Char";
+	mso-style-link:Code;
+	font-family:Courier;}
+ /* Page Definitions */
+ @page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoTitle>Result Set Scalability</p>
+
+<h1><a name="_Ref27294569">Introduction</a></h1>
+
+<p class=MsoNormal>The persistence layer supports two versions of the find()
+API (a similar two versions exist for the query() API).</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal><span style='font-family:"Courier New"'>QueryResult
+     find(StatementSpec)</span></li>
+ <li class=MsoNormal><span style='font-family:"Courier New"'>ResultProcessor
+     find(StatementSpec,ResultProcessor)</span></li>
+</ul>
+
+<p class=MsoNormal style='margin-left:.25in'>&nbsp;</p>
+
+<p class=MsoNormal>In both cases, the StatementSpec is used to generate the
+exact same SQL query and result set.  The main difference is manner in which
+results are processed.  This difference is significant as the size of the
+result set scales from a small to a large number of results.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>In a typical scenario, a StatementSpec is constructed,
+executed, and the results are processed.  The processing may take the form of
+returning results to an end user, passing the results to another API, or
+executing some operations based on the results.  There may also be some
+additional per result processing to manipulate the result.  Assuming this
+scenario, the basic algorithm for the API which returns a QueryResult is as
+follows.  The steps in red are executed in the persistence layer when the
+find() method is called.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Construct
+StatementSpec</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Call
+find(StatementSpec) </span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>Build and execute SQL</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>For each row returned from the database</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Read items
+(String,Number,Timestamp,Blob) from result set</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Build Persistable/ObjectMappable and
+deserialize Blobs</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Filter based on access control </span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Add element to QueryResult</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>End For each row</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>For
+each element in QueryResult</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>   Process
+element</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>End
+For each element</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The algorithm for the ResultProcessor based API is as
+follows.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Construct
+StatementSpec</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Construct
+ResultProcessor</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Call
+find(StatementSpec, ResultProcessor) </span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>Build and execute SQL</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>For each row returned from the database</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Read items
+(String,Number,Timestamp,Blob) from result set</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Build Persistable/ObjectMappable and
+deserialize Blobs</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Filter based on access control </span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>   Pass element to ResultProcessor</span></p>
+
+<p class=MsoNormal style='margin-left:.8in;text-indent:.1in'><span
+style='font-size:10.0pt;font-family:"Courier New"'>Process element</span></p>
+
+<p class=MsoNormal style='margin-left:.3in'><span style='font-size:10.0pt;
+font-family:"Courier New";color:red'>End For each row</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal>Note the differences in the algorithms as it relates to
+large result sets.  In the QueryResult case, the result set is iterated over
+twice as compared to only once for the ResultProcessor case.  In the
+QueryResult case, all result elements must exist in memory at one time while in
+the ResultProcessor case, the number of result elements in memory is controlled
+by the ResultProcessor implementation.  For some implementations, only a single
+element may exist in memory at any point during the query processing.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Results sets can be concurrent processed with background
+threads.  When processing a row, the first two steps (read and build) can
+execute concurrently with the last two steps (filter and process).  In other
+words, the calling code can begin processing result elements while the
+persistence layer is still reading later results from the database.</p>
+
+<h1>Examples</h1>
+
+<h2>Processing Results to In-Memory Storage</h2>
+
+<p class=MsoNormal>The following are reasons to process results directly using
+a ResultProcessor instead of obtaining a QueryResult and iterating over it.</p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal>Avoids iterating over the result set more than once</li>
+ <li class=MsoNormal>Avoids an unnecessary data structure (i.e. QueryResult)
+     that holds references to the result elements.  Time is taken to allocate
+     storage for the references and to de-allocate (garbage collect) the
+     reference.</li>
+ <li class=MsoNormal>Avoids unnecessary memory footprint.  In some case, the
+     number of references to the result elements will be twice as large as it
+     needs to be.</li>
+</ul>
+
+<h3>Collection Based </h3>
+
+<p class=MsoNormal>Some collection based classes implement ResultProcessor.  If
+a query returns a Persistable object as the first item or an object's class
+name as the first item and the object's ID as the second item, then the query
+can be executed and return results directly into the collection.  See <a
+href="../../../wt/fc/collections/WTArrayList.html">WTArrayList</a> for more
+details. The following example code shows three ways to query for and return
+results into a WTArrayList.  In each case, assume the query returns a
+Persistable.</p>
+
+<h4>QueryResult </h4>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>QueryResult
+result = PersistenceHelper.manager.find(querySpec);</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>WTArrayList
+list = new WTArrayList(result.size());</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>while(result.hasMoreElements())
+{</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>   list.add(result.next());</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal>Note that after the code find() call, the results must be
+iterated over to add them to the list.  Even after they are added to the list,
+the QueryResult still store references to the result object which cannot be
+garbage collected until the result goes out of scope.</p>
+
+<h4>QueryResult Enumeration</h4>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>QueryResult
+result = PersistenceHelper.manager.find(querySpec);</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>WTArrayList
+list = new WTArrayList(result.size());</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>Enumeration
+resultEnum = result.getEnumeration();</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>result
+= null;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>while(resultEnum.hasMoreElements())
+{</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>   list.add(resultEnum.next());</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal>The above code offers some improvements in that it allows
+QueryResult references to the result objects to be garbage collected as soon as
+they are added to the list (i.e. once resultEnum.next() is called).  This code
+must still iterate over the entire result set.</p>
+
+<h4>ResultProcessor</h4>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>WTArrayList
+list = new WTArrayList();</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>QueryResult
+result = PersistenceHelper.manager.find(querySpec, list);</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal>The above code offers the best performance and
+scalability.  It doesn't require any QueryResult instances or the internal
+references so there is no uecessary garbage collecting.</p>
+
+<h3>TypeInstances</h3>
+
+<p class=MsoNormal>The BasicQueryCommand support soft type based queries that
+return TypeInstances.  Internally, the server side query code uses QuerySpec to
+populate the TypeInstances directly without having to generate the entire data
+into a QueryResult which is then processed to build TypeInstances.</p>
+
+<h3>Array Of Long </h3>
+
+<p class=MsoNormal>The BasicQueryCommand implements an optimization where it
+queries for object IDs and uses this ArrayList&lt;Long&gt; in subsequent
+queries and processing.  Instead of returning a QueryResult and adding each
+item, a ResultProcessor is used.</p>
+
+<h2>Streaming </h2>
+
+<p class=MsoNormal>Streaming refers to processing data as a series of elements
+without requiring all elements to be available in memory.  As the data is made
+available, it is processed.  Generally, streaming must occur throughout layers
+of code.  All layers must implement some form of streaming to realize the
+benefits.</p>
+
+<h3>Report OutputStream</h3>
+
+<p class=MsoNormal>The QueryBuilder reporting execution involves the following
+steps:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Execute query and return results.</li>
+ <li class=MsoNormal>Convert results to XML.</li>
+ <li class=MsoNormal>Transform XML to requested report output format.</li>
+ <li class=MsoNormal>Write output format to output stream (usually HTTP
+     response output stream).</li>
+     </ol>
+
+<p class=MsoNormal>Because report queries can produce very large results, a
+streaming mechanism is required.  As each query result element is processed, it
+is converted to an XML SAX event, the SAX event listener converts the event
+data to the specified format, and the resulting data is written to the response
+output stream.  See <a
+href="../../../wt/query/template/ResultProcessorResultSAXSource.html">ResultProcessorResultSAXSource</a>.
+</p>
+
+<h3>Asynchronous DataSource</h3>
+
+<p class=MsoNormal>The client architecture supports asynchronous datasources
+for providing data to UI components (See <a
+href="../../../../../wnc/Mvc/com/ptc/mvc/components/ComponentDataBuilderAsync.html">ComponentDataBuilderAsync</a>
+and <a
+href="../../../../../wnc/Mvc/com/ptc/mvc/components/ComponentResultProcessor.html">ComponentResultProcessor</a>).
+</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>QueryBuilder reporting implements an asynchronous DataSource
+to display results in a JCA table (<a
+href="../../../../../wnc/Reporting/com/ptc/windchill/enterprise/report/mvc/builders/ReportResultsAsyncTableBuilder.html">ReportResultsAsyncTableBuilder</a>).
+Note that the ComponentResultProcessor implements ResultProcessor so in some
+cases it can be used directly in calls to retrieve data from the persistence
+layer.  However, in the reporting case the data retrieved directly from the
+JDBC result set must be processed (e.g. some data such as EnumeratedType values
+are converted to their localized display names) so the ResultProcessor is
+chained.  In other words, there is a ResultProcessor instance (in this case ReportResultsAsyncTableBuilder.TableReportResultProcessor
+is used) that holds a reference to the DataSource ComponentResultProcessor.
+When an element is added, the data is processed and then the reference
+ComponentResultProcessor's addElement() method is called passing the processed
+data.</p>
+
+<h2>Batch Processing</h2>
+
+<p class=MsoNormal>Batch processing via a ResultProcessor can be used when a
+large query result is the basis for related updated or deletes.  As the query
+result elements are added to the ResultProcessor instance, the data is stored
+until a sufficient number of objects are accumulated to do a batch update or
+delete.  This is a tradeoff between storing a number of objects in memory and
+executing efficient multi-object APIs.  On the one extreme, the entire result
+set could be stored in memory and a single multi-object batch API could be
+executed.  On the other extreme, each element could be processed immediately
+and the single object update or delete could be called.  The best performance
+will depend on the memory foot print of the results and the batch API that is
+used.</p>
+
+<h3>Migrator updates</h3>
+
+<p class=MsoNormal>Migrators may need to execute operations for every row in a
+table.  For very large tables, the entire result set cannot exist in memory at
+one time.  The following is an example of a migrator that uses a
+ResultProcessor: <a
+href="../../../../../wnc/WncMigrators-upgrade/wt/change2/MigrateProcessVariables.html">MigrateProcessVariables</a></p>
+
+<h3>DeleteBatchSpec</h3>
+
+<p class=MsoNormal>The class <a href="../../../wt/fc/batch/DeleteBatchSpec.html">DeleteBatchSpec</a>
+can be used to delete one or more objects based on specified criteria.  Internally,
+due to referential integrity processing, the processing may need to
+first query for the object IDs that need to be deleted instead of directly
+deleting in the database.  Because the number of affected objects is not known
+and could be large, a ResultProcessor is used to handle the object IDs returned
+by the query.  When the number of accumulated IDs reach the batch size, then
+the objects for that batch are deleted.  After deleting the batch, control
+returns to processing the IDs from the query.  This implementation uses a
+common abstract base class, <a
+href="../../../wt/fc/AbstractOidChunkResultProcessor.html">AbstractOidChunkResultProcessor</a>,
+that handles processing the results until a limit is met and then calling an
+abstract process method.</p>
+
+<h1>Tips</h1>
+
+<h2>Using ResultProcessor Instead of Paging</h2>
+
+<p class=MsoNormal>When the main goal is to reduce the memory footprint of a
+large result set, a ResultProcessor should generally always be used instead of
+paging.  Paging requires significant resources.  In both cases, the query is
+the same, but paging requires each result to be inserted back into the database
+in a paging table and additional database queries to fetch the actual result
+objects.  The persistent nature of the result set is the main reason to use
+paging.</p>
+
+<h2>Chaining ResultProcessor Implementations</h2>
+
+<p class=MsoNormal>In some cases, it may make sense to chain ResultProcessor
+implementations.  This is often needed when a ResultProcessor implementation
+already exists for a specific purpose, but you require additional processing.
+Instead of modifying an existing implementation the result elements can be
+passed from one ResultProcessor instance to the next.  Your ResultProcessor
+instance would contain a reference to another ResultProcessor, the addElement()
+method would receive the element data, process it, and pass it on to the
+referenced ResultProcessor instance.</p>
+
+<h2>Processing Dependent on Other Elements</h2>
+
+<p class=MsoNormal>In some cases, query results need to be processed and this
+processing is dependent on other objects in the result set.  The
+ResultProcessor addElement() method only passes a single object, so the other
+objects are not directly accessible.  It may be possible to specify database
+sorting so that all dependent objects are adjacent to each other in the result
+set.  Then, the ResultProcessor could temporarily hold onto all dependent
+objects until all of the objects have been received, process the objects, and
+then remove the references.  For example, consider a query for Parts where all
+Parts with the same branch ID are processed to compute a result.  The query
+could append a sort on the branch ID attribute.  The ResultProcessor
+addElement() method receives each Part and gets it branch ID.  If the branch ID
+is the same as the current branch ID, then the Part is added to a list.  If the
+branch ID is different from the current branch ID, then any existing Parts in
+the list are processed, the list is cleared, and the current branch ID is set
+to the new branch ID.</p>
+
+<h2>Terminate Processing</h2>
+
+<p class=MsoNormal>To terminate processing, a <a
+href="../../../wt/fc/ResultProcessorLimitException.html">ResultProcessorLimitException</a>
+should be thrown from the ResultProcessor addElement() method.  This type of
+exception is recognized by the persistence layer as termination of a query that
+is not an error condition.</p>
+
+<h2>Avoid Single Object APIs</h2>
+
+<p class=MsoNormal>The ResultProcessor addElement() method is called for each
+row in the query result.  For performance reasons, it is important to avoid
+directly calling single object APIs.  An implementation that calls other APIs
+should ensure those objects are processed efficiently as batch operations.
+The class <a href="../../../wt/fc/AbstractOidChunkResultProcessor.html">AbstractOidChunkResultProcessor</a>
+can be used in some cases.</p>
+
+<h2>Disable ObjectTable</h2>
+
+<p class=MsoNormal>For queries that return full Persistable objects in the result, referrences may
+be stored internally to ensure that a single copy of each object is returned.  This processing also
+maintains references to the objects for the duration of the query processing. If a ResultProcessor is used,
+the intent is to avoid holding references to query results so the ObjectTable feature should be disabled.
+This can be done by calling the <a href="../../../wt/query/QuerySpec.html#setObjectTableEnabled(boolean)">QuerySpec.setObjectTableEnabled()</a>.</p>
+
+</div>
+
+</body>
+
+</html>

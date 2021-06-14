@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_4qDaUT2GEeGZMrRFkUf-ug" name="Model">
+  <packageImport xmi:id="_4qDaUj2GEeGZMrRFkUf-ug">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_v_QFkD4DEeGmR9kN6VbMtQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Wy4PED2HEeGZMrRFkUf-ug" name="ObjectMappable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aZIkED2HEeGZMrRFkUf-ug" name="EnumeratedType" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nVUtsD2HEeGZMrRFkUf-ug" name="AdministrativeLock">
+    <generalization xmi:id="_0EBN4D2HEeGZMrRFkUf-ug" general="_Wy4PED2HEeGZMrRFkUf-ug"/>
+    <ownedAttribute xmi:id="_8WfTcEHyEeGKE7uxaHQdDA" name="type" type="_o-z0AD2HEeGZMrRFkUf-ug" aggregation="composite" association="_8WfTc0HyEeGKE7uxaHQdDA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8WfTcUHyEeGKE7uxaHQdDA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8WfTckHyEeGKE7uxaHQdDA"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_o-z0AD2HEeGZMrRFkUf-ug" name="AdministrativeLockType">
+    <generalization xmi:id="_2kGlAD2HEeGZMrRFkUf-ug" general="_aZIkED2HEeGZMrRFkUf-ug"/>
+    <ownedAttribute xmi:id="_-hX9kD2HEeGZMrRFkUf-ug" name="PRODUCT_DESIGN_PACKAGE"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_X0NTwD2IEeGZMrRFkUf-ug" name="AdministrativelyLockable"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_gvga0D2IEeGZMrRFkUf-ug" name="" memberEnd="_gvga1D2IEeGZMrRFkUf-ug _gvga0T2IEeGZMrRFkUf-ug" navigableOwnedEnd="_gvga0T2IEeGZMrRFkUf-ug">
+    <ownedEnd xmi:id="_gvga0T2IEeGZMrRFkUf-ug" name="administrativeLock" type="_nVUtsD2HEeGZMrRFkUf-ug" aggregation="composite" association="_gvga0D2IEeGZMrRFkUf-ug">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gvga0j2IEeGZMrRFkUf-ug" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gvga0z2IEeGZMrRFkUf-ug" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_gvga1D2IEeGZMrRFkUf-ug" name="" type="_X0NTwD2IEeGZMrRFkUf-ug" association="_gvga0D2IEeGZMrRFkUf-ug">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gvga1T2IEeGZMrRFkUf-ug" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gvga1j2IEeGZMrRFkUf-ug" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="__cE10D2IEeGZMrRFkUf-ug" name="AdministrativelyLockable"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IObcQD2JEeGZMrRFkUf-ug" name="AdministrativeLockHelper" clientDependency="_a6kLQD2JEeGZMrRFkUf-ug">
+    <ownedOperation xmi:id="_9aNPQD2JEeGZMrRFkUf-ug" name="getAdministrativeLock">
+      <ownedParameter xmi:id="_JMWAkD2KEeGZMrRFkUf-ug" type="_o-z0AD2HEeGZMrRFkUf-ug" direction="return"/>
+      <ownedParameter xmi:id="_kr6UED2KEeGZMrRFkUf-ug" name="obj" type="_X0NTwD2IEeGZMrRFkUf-ug"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JOjcgD2JEeGZMrRFkUf-ug" name="AdministrativeLockServerHelper" clientDependency="_b1oFUD2JEeGZMrRFkUf-ug _356PcD2JEeGZMrRFkUf-ug _pCZXIEHzEeGKE7uxaHQdDA">
+    <ownedAttribute xmi:id="_DekmEEIXEeGL3sb3G89ZaA" name="propertyServiceKey" type="_LbvFwD2JEeGZMrRFkUf-ug" association="_DekmE0IXEeGL3sb3G89ZaA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DekmEUIXEeGL3sb3G89ZaA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DekmEkIXEeGL3sb3G89ZaA" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="__FUtQD2JEeGZMrRFkUf-ug" name="getMapping">
+      <ownedParameter xmi:id="_QoZtAD2LEeGZMrRFkUf-ug" type="_pGbXID4EEeGmR9kN6VbMtQ" direction="return"/>
+      <ownedParameter xmi:id="_S2pGMD2LEeGZMrRFkUf-ug" name="serviceKey" type="_LbvFwD2JEeGZMrRFkUf-ug"/>
+      <ownedParameter xmi:id="_U-1hwD2LEeGZMrRFkUf-ug" name="typeToDefaultValueMap" type="_pGbXID4EEeGmR9kN6VbMtQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="__u1kUD2JEeGZMrRFkUf-ug" name="setAdministrativeLock">
+      <ownedParameter xmi:id="_Dv0RAD2LEeGZMrRFkUf-ug" name="obj" type="_X0NTwD2IEeGZMrRFkUf-ug"/>
+      <ownedParameter xmi:id="_F1FUYD2LEeGZMrRFkUf-ug" name="type" type="_o-z0AD2HEeGZMrRFkUf-ug"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_LbvFwD2JEeGZMrRFkUf-ug" name="PropertyServiceKey">
+    <ownedLiteral xmi:id="_wrrHID2JEeGZMrRFkUf-ug" name="ACCESS"/>
+    <ownedLiteral xmi:id="_x03j0D2JEeGZMrRFkUf-ug" name="MATURITY"/>
+    <ownedLiteral xmi:id="_ysNbgD2JEeGZMrRFkUf-ug" name="CHANGE_MANAGEMENT"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_a6kLQD2JEeGZMrRFkUf-ug" name="manages" supplier="__cE10D2IEeGZMrRFkUf-ug" client="_IObcQD2JEeGZMrRFkUf-ug"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_b1oFUD2JEeGZMrRFkUf-ug" name="manages" supplier="__cE10D2IEeGZMrRFkUf-ug" client="_JOjcgD2JEeGZMrRFkUf-ug"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_356PcD2JEeGZMrRFkUf-ug" name="" supplier="_LbvFwD2JEeGZMrRFkUf-ug" client="_JOjcgD2JEeGZMrRFkUf-ug"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pGbXID4EEeGmR9kN6VbMtQ" name="Map"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_8WfTc0HyEeGKE7uxaHQdDA" name="" memberEnd="_8WfTdEHyEeGKE7uxaHQdDA _8WfTcEHyEeGKE7uxaHQdDA">
+    <ownedEnd xmi:id="_8WfTdEHyEeGKE7uxaHQdDA" name="" type="_nVUtsD2HEeGZMrRFkUf-ug" association="_8WfTc0HyEeGKE7uxaHQdDA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8WfTdUHyEeGKE7uxaHQdDA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8WfTdkHyEeGKE7uxaHQdDA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_pCZXIEHzEeGKE7uxaHQdDA" name="" supplier="_LbvFwD2JEeGZMrRFkUf-ug" client="_JOjcgD2JEeGZMrRFkUf-ug"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_DekmE0IXEeGL3sb3G89ZaA" name="administrativeLockServerHelper_propertyServiceKey_0" memberEnd="_DekmFEIXEeGL3sb3G89ZaA _DekmEEIXEeGL3sb3G89ZaA">
+    <ownedEnd xmi:id="_DekmFEIXEeGL3sb3G89ZaA" name="administrativeLockServerHelper" type="_JOjcgD2JEeGZMrRFkUf-ug" association="_DekmE0IXEeGL3sb3G89ZaA">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DekmFUIXEeGL3sb3G89ZaA" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DekmFkIXEeGL3sb3G89ZaA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
